@@ -17,4 +17,14 @@ class KelGuruController extends BaseController
         ];
         return view('pages/admin/kelola_guru/index', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Data User',
+            'active' => 'guru',
+
+        ];
+        return view('pages/admin/kelola_guru/edit', $data);
+    }
 }

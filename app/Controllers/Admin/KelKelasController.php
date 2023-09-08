@@ -17,4 +17,14 @@ class KelKelasController extends BaseController
         ];
         return view('pages/admin/kelola_kelas/index', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Data User',
+            'active' => 'kelas',
+
+        ];
+        return view('pages/admin/kelola_kelas/edit', $data);
+    }
 }

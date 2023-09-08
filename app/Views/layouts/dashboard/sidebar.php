@@ -71,18 +71,18 @@
 				<div data-i18n="Account Settings">Kelola Pengguna</div>
 			</a>
 			<ul class="menu-sub">
-				<li class="menu-item">
-					<a href="<?= base_url('admin/kelola_siswa') ?>" class="menu-link <?= ($active == 'siswa') ? 'active' : '' ?>">
+				<li class="menu-item <?= ($active == 'siswa') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/kelola_siswa') ?>" class="menu-link">
 						<div data-i18n="Account">Kelola Siswa</div>
 					</a>
 				</li>
-				<li class="menu-item">
-					<a href="<?= base_url('admin/kelola_guru') ?>" class="menu-link <?= ($active == 'guru') ? 'active' : '' ?>">
+				<li class="menu-item <?= ($active == 'guru') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/kelola_guru') ?>" class="menu-link">
 						<div data-i18n="Notifications">Kelola Guru</div>
 					</a>
 				</li>
-				<li class="menu-item">
-					<a href="<?= base_url('admin/kelola_walikelas') ?>" class="menu-link <?= ($active == 'walikelas') ? 'active' : '' ?>">
+				<li class="menu-item <?= ($active == 'walikelas') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/kelola_walikelas') ?>" class="menu-link">
 						<div data-i18n="Connections">Kelola Walikelas</div>
 					</a>
 				</li>
@@ -93,13 +93,13 @@
 		<li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 		<!-- Cards -->
 		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_siswa') ?>" class="menu-link <?= ($active == 'siswa') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_kelas') ?>" class="menu-link <?= ($active == 'siswa') ? 'active' : '' ?>">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
 				<div data-i18n="Basic">Kelola Kelas</div>
 			</a>
 		</li>
 		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_guru') ?>" class="menu-link <?= ($active == 'guru') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link <?= ($active == 'guru') ? 'active' : '' ?>">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
 				<div data-i18n="Basic">Kelola Mapel</div>
 			</a>

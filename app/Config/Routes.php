@@ -26,15 +26,19 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     //kelola siswa
     $routes->get('kelola_siswa', 'Admin\KelSiswaController::index');
+    $routes->get('kelola_siswa/edit', 'Admin\KelSiswaController::edit');
 
     //kelola guru
     $routes->get('kelola_guru', 'Admin\KelGuruController::index');
+    $routes->get('kelola_guru/edit', 'Admin\KelGuruController::edit');
 
     //kelola walikelas
     $routes->get('kelola_walikelas', 'Admin\KelWalikelasController::index');
+    $routes->get('kelola_walikelas/edit', 'Admin\KelWalikelasController::edit');
 
     //kelola kelas
     $routes->get('kelola_kelas', 'Admin\KelKelasController::index');
+    $routes->get('kelola_kelas/edit', 'Admin\KelkelasController::edit');
 
     //kelola mapel
     $routes->get('kelola_mapel', 'Admin\KelMapelController::index');

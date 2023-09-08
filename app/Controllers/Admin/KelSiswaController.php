@@ -17,4 +17,14 @@ class KelSiswaController extends BaseController
         ];
         return view('pages/admin/kelola_siswa/index', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Data User',
+            'active' => 'siswa',
+
+        ];
+        return view('pages/admin/kelola_siswa/edit', $data);
+    }
 }
