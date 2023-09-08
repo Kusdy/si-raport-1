@@ -9,7 +9,7 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Forms /</span> Tambah Siswa
+            <span class="text-muted fw-light">Forms /</span> Tambah Kelas
         </h4>
         <div class="col-xl-12 mx-auto">
             <!-- HTML5 Inputs -->

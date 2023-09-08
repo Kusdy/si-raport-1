@@ -42,12 +42,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     //kelola mapel
     $routes->get('kelola_mapel', 'Admin\KelMapelController::index');
+    $routes->get('kelola_mapel/edit', 'Admin\KelMapelController::edit');
 
     //kelola raport
     $routes->get('kelola_raport', 'Admin\KelRaportController::index');
-
-    //kelola KD
-    $routes->get('kelola_kd', 'Admin\KelKdController::index');
+    $routes->get('kelola_raport/edit', 'Admin\KelRaportController::edit');
 
     //kelola set tahun ajar
     $routes->get('kelola_set_tahun', 'Admin\KelSetTahunController::index');

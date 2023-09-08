@@ -110,12 +110,6 @@
 				<div data-i18n="Basic">Kelola Raport</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_kd') ?>" class="menu-link <?= ($active == 'kd') ? 'active' : '' ?>">
-				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola KD</div>
-			</a>
-		</li>
 
 		<!-- Forms & Tables -->
 		<li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
