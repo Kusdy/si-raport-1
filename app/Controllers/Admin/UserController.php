@@ -13,7 +13,7 @@ class UserController extends BaseController
         $dataUser = $model->findAll();
         $data = [
             'title' => 'Data User',
-            'active' => 'Data Pengguna',
+            'active' => 'pengguna',
             'dataUser' => $dataUser
         ];
         return view('pages/admin/data_pengguna/index', $data);
