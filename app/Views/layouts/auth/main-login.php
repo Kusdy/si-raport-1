@@ -43,21 +43,21 @@ data-template="vertical-menu-template-free"
   />
 
   <!-- Icons. Uncomment required icon fonts -->
-  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendor/fonts/boxicons.css" />
+  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/fonts/boxicons.css" />
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendor/css/core.css" class="template-customizer-core-css" />
-  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/css/theme-default.css" class="template-customizer-theme-css" />
   <link rel="stylesheet" href="<?= base_url() ?>template/assets/css/demo.css" />
 
-  <!-- Vendors CSS -->
-  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <!-- Vendorss CSS -->
+  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
   <!-- Page CSS -->
   <!-- Page -->
-  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendor/css/pages/page-auth.css" />
+  <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/css/pages/page-auth.css" />
   <!-- Helpers -->
-  <script src="<?= base_url() ?>template/assets/vendor/js/helpers.js"></script>
+  <script src="<?= base_url() ?>template/assets/vendors/js/helpers.js"></script>
 
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -71,16 +71,16 @@ data-template="vertical-menu-template-free"
     <!-- End Content -->
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="<?= base_url() ?>template/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="<?= base_url() ?>template/assets/vendor/libs/popper/popper.js"></script>
-    <script src="<?= base_url() ?>template/assets/vendor/js/bootstrap.js"></script>
-    <script src="<?= base_url() ?>template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <!-- build:js assets/vendors/js/core.js -->
+    <script src="<?= base_url() ?>template/assets/vendors/libs/jquery/jquery.js"></script>
+    <script src="<?= base_url() ?>template/assets/vendors/libs/popper/popper.js"></script>
+    <script src="<?= base_url() ?>template/assets/vendors/js/bootstrap.js"></script>
+    <script src="<?= base_url() ?>template/assets/vendors/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="<?= base_url() ?>template/assets/vendor/js/menu.js"></script>
+    <script src="<?= base_url() ?>template/assets/vendors/js/menu.js"></script>
     <!-- endbuild -->
 
-    <!-- Vendors JS -->
+    <!-- Vendorss JS -->
 
     <!-- Main JS -->
     <script src="<?= base_url() ?>template/assets/js/main.js"></script>

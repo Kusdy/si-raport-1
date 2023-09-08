@@ -1,15 +1,15 @@
 <!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="<?= base_url() ?>template/assets/vendor/libs/jquery/jquery.js"></script>
-<script src="<?= base_url() ?>template/assets/vendor/libs/popper/popper.js"></script>
-<script src="<?= base_url() ?>template/assets/vendor/js/bootstrap.js"></script>
-<script src="<?= base_url() ?>template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<!-- build:js assets/vendors/js/core.js -->
+<script src="<?= base_url() ?>template/assets/vendors/libs/jquery/jquery.js"></script>
+<script src="<?= base_url() ?>template/assets/vendors/libs/popper/popper.js"></script>
+<script src="<?= base_url() ?>template/assets/vendors/js/bootstrap.js"></script>
+<script src="<?= base_url() ?>template/assets/vendors/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-<script src="<?= base_url() ?>template/assets/vendor/js/menu.js"></script>
+<script src="<?= base_url() ?>template/assets/vendors/js/menu.js"></script>
 <!-- endbuild -->
 
-<!-- Vendors JS -->
-<script src="<?= base_url() ?>template/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<!-- Vendorss JS -->
+<script src="<?= base_url() ?>template/assets/vendors/libs/apex-charts/apexcharts.js"></script>
 
 <!-- Main JS -->
 <script src="<?= base_url() ?>template/assets/js/main.js"></script>
