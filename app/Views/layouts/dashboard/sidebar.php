@@ -69,51 +69,23 @@
 <ul class="menu-inner py-1">
 	<!-- Dashboard -->
 	<li class="menu-item active">
-		<a href="index.html" class="menu-link <?= ($active == 'dashboard') ? 'active' : '' ?>">
+		<a href="<?= base_url('admin/dashboard') ?>" class="menu-link <?= ($active == 'dashboard') ? 'active' : '' ?>">
 			<i class="menu-icon tf-icons bx bx-home-circle"></i>
 			<div data-i18n="Analytics">Dashboard</div>
 		</a>
 	</li>
 
-	<!-- Layouts -->
-	<li class="menu-item">
-		<a href="javascript:void(0);" class="menu-link menu-toggle">
-			<i class="menu-icon tf-icons bx bx-child"></i>
-			<div data-i18n="Layouts">Layouts</div>
-		</a>
-
-		<ul class="menu-sub">
-			<li class="menu-item">
-				<a href="layouts-without-menu.html" class="menu-link">
-					<div data-i18n="Without menu">Without menu</div>
-				</a>
-			</li>
-			<li class="menu-item">
-				<a href="layouts-without-navbar.html" class="menu-link">
-					<div data-i18n="Without navbar">Without navbar</div>
-				</a>
-			</li>
-			<li class="menu-item">
-				<a href="layouts-container.html" class="menu-link">
-					<div data-i18n="Container">Container</div>
-				</a>
-			</li>
-			<li class="menu-item">
-				<a href="layouts-fluid.html" class="menu-link">
-					<div data-i18n="Fluid">Fluid</div>
-				</a>
-			</li>
-			<li class="menu-item">
-				<a href="layouts-blank.html" class="menu-link">
-					<div data-i18n="Blank">Blank</div>
-				</a>
-			</li>
-		</ul>
-	</li>
-
 	<li class="menu-header small text-uppercase">
-		<span class="menu-header-text">Pages</span>
+		<span class="menu-header-text">Data Master</span>
 	</li>
+
+	<li class="menu-item">
+		<a href="<?= base_url('admin/data-pengguna') ?>" class="menu-link <?= ($active == 'pengguna') ? 'active' : '' ?>">
+			<i class="menu-icon tf-icons bx bx-user"></i>
+			<div data-i18n="Basic">Data Pengguna</div>
+		</a>
+	</li>
+
 	<li class="menu-item">
 		<a href="javascript:void(0);" class="menu-link menu-toggle">
 			<i class="menu-icon tf-icons bx bx-dock-top"></i>
