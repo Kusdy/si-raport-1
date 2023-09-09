@@ -12,7 +12,7 @@ class KelGuruController extends BaseController
 
         $data = [
             'title' => 'Data User',
-            'active' => 'kelola guru',
+            'active' => 'guru',
 
         ];
         return view('pages/admin/kelola_guru/index', $data);

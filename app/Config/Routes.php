@@ -16,10 +16,10 @@ $routes->get('logout', 'Auth\LoginController::logout');
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Admin\DashboardController::index');
 
-    //data pengguna
+    //data pengguna (UDAH JADI)
     $routes->get('data-pengguna', 'Admin\UserController::index');
-    $routes->get('data-pengguna/new', 'Admin\UserController::tambah');
-    $routes->post('data-pengguna/add', 'Admin\UserController::prosesTambah');
+    $routes->get('data-pengguna/new', 'Admin\UserController::new');
+    $routes->post('data-pengguna/add', 'Admin\UserController::add');
     $routes->get('data-pengguna/edit/(:num)', 'Admin\UserController::edit/$1');
     $routes->post('data-pengguna/update/(:num)', 'Admin\UserController::update/$1');
     $routes->get('data-pengguna/delete/(:num)', 'Admin\UserController::delete/$1');
@@ -36,9 +36,23 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('kelola_walikelas', 'Admin\KelWalikelasController::index');
     $routes->get('kelola_walikelas/edit', 'Admin\KelWalikelasController::edit');
 
-    //kelola kelas
+    //kelola kelas (UDAH JADI)
     $routes->get('kelola_kelas', 'Admin\KelKelasController::index');
-    $routes->get('kelola_kelas/edit', 'Admin\KelkelasController::edit');
+    $routes->post('kelola_kelas/add', 'Admin\KelKelasController::add');
+    $routes->post('kelola_kelas/update/(:num)', 'Admin\KelKelasController::update/$1');
+    $routes->get('kelola_kelas/delete/(:num)', 'Admin\KelKelasController::delete/$1');
+
+    //kelola semester (UDAH JADI)
+    $routes->get('kelola_semester', 'Admin\KelSemesterController::index');
+    $routes->post('kelola_semester/add', 'Admin\KelSemesterController::add');
+    $routes->post('kelola_semester/update/(:num)', 'Admin\KelSemesterController::update/$1');
+    $routes->get('kelola_semester/delete/(:num)', 'Admin\KelSemesterController::delete/$1');
+
+    //kelola tahun ajar (UDAH JADI)
+    $routes->get('kelola_tahun_ajar', 'Admin\KelSetTahunController::index');
+    $routes->post('kelola_tahun_ajar/add', 'Admin\KelSetTahunController::add');
+    $routes->post('kelola_tahun_ajar/update/(:num)', 'Admin\KelSetTahunController::update/$1');
+    $routes->get('kelola_tahun_ajar/delete/(:num)', 'Admin\KelSetTahunController::delete/$1');
 
     //kelola mapel
     $routes->get('kelola_mapel', 'Admin\KelMapelController::index');
@@ -47,9 +61,6 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     //kelola raport
     $routes->get('kelola_raport', 'Admin\KelRaportController::index');
     $routes->get('kelola_raport/edit', 'Admin\KelRaportController::edit');
-
-    //kelola set tahun ajar
-    $routes->get('kelola_set_tahun', 'Admin\KelSetTahunController::index');
 
     //kelola set kelas
     $routes->get('kelola_set_kelas', 'Admin\KelSetKelasController::index');

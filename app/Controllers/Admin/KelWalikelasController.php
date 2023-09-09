@@ -12,7 +12,7 @@ class KelWalikelasController extends BaseController
 
         $data = [
             'title' => 'Data User',
-            'active' => 'kelola walikelas',
+            'active' => 'walikelas',
 
         ];
         return view('pages/admin/kelola_walikelas/index', $data);

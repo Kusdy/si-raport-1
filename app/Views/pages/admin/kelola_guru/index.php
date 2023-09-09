@@ -50,5 +50,6 @@
                 </table>
             </div>
         </div>
-
-        <?= $this->endSection(); ?>
+    </div>
+</div>
+<?= $this->endSection(); ?>

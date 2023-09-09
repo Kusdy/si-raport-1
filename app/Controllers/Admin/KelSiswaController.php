@@ -12,7 +12,7 @@ class KelSiswaController extends BaseController
 
         $data = [
             'title' => 'Data User',
-            'active' => 'kelola siswa',
+            'active' => 'siswa',
 
         ];
         return view('pages/admin/kelola_siswa/index', $data);

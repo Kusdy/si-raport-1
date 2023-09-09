@@ -8,7 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'tb_user';
     protected $primaryKey = 'id_user';
-    protected $allowedFields = ['email', 'password', 'role'];
+    protected $allowedFields = ['email', 'nama', 'password', 'role'];
 
     public function getUserByEmail($email)
     {
