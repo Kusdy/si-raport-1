@@ -362,6 +362,17 @@ select:disabled {
   display: none;
 }
 
+.add-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-button {
+  margin-right: 10px;
+}
+
 button,
 [type=button],
 [type=reset],
