@@ -11,16 +11,17 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Kelola</span> Guru
+            <span class="text-muted fw-light">Dashboard /</span> Kelola Guru
         </h4>
 
         <!-- Basic Bootstrap Table -->
+        <?= $this->include('components/alerts'); ?>
         <div class="card">
             <div class="card-header">
                 <div class="add-button-container">
                     <h5>Data Guru</h5>
                     <a href="<?= base_url('admin/kelola_guru/new'); ?>" class="btn btn-primary add-button">
-                        <i class="bx bx-plus me-0 me-sm-1"></i>Tambah Guru
+                        <span class="tf-icons bx bx-plus-circle"></span>&nbsp;Tambah Guru
                     </a>
                 </div>
             </div>

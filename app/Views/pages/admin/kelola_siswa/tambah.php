@@ -11,10 +11,11 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Tambah Data Siswa</span>
+            <span class="text-muted fw-light">Kelola Siswa /</span> Tambah Data Siswa
         </h4>
 
         <div class="col-xxl">
+            <?= $this->include('components/alerts'); ?>
             <div class="card mb-4">
                 <div class="card-body">
                     <form action="<?= base_url('admin/kelola_siswa/add') ?>" method="post"
@@ -172,8 +173,9 @@
 
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
-                                <a href="<?= base_url('admin/kelola_siswa');?>" class="btn btn-dark">Close</a>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                                <button type="reset" class="btn btn-danger me-2">Reset</button>
+                                <a href="<?= base_url('admin/kelola_siswa');?>" class="btn btn-warning me-2">Back</a>
                             </div>
                         </div>
                     </form>

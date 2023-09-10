@@ -11,16 +11,17 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Kelola</span> Wali Kelas
+            <span class="text-muted fw-light">Dashboard /</span> Kelola Wali Kelas
         </h4>
 
         <!-- Basic Bootstrap Table -->
+        <?= $this->include('components/alerts'); ?>
         <div class="card">
             <div class="card-header">
                 <div class="add-button-container">
                     <h5>Data Wali Kelas</h5>
                     <a href="<?= base_url('admin/kelola_walikelas/new'); ?>" class="btn btn-primary add-button">
-                        <i class="bx bx-plus me-0 me-sm-1"></i>Tambah Wali Kelas
+                        <span class="tf-icons bx bx-plus-circle"></span>&nbsp;Tambah Wali Kelas
                     </a>
                 </div>
             </div>
