@@ -1,6 +1,8 @@
 <?= $this->extend('layouts/dashboard/main'); ?>
 <?= $this->section('content'); ?>
 
+<?= $this->include('components/sweetAlerts'); ?>
+
 <div class="content-wrapper">
 
     <!-- Content -->
@@ -9,15 +11,23 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Tables /</span> Kelola Siswa
+            <span class="text-muted fw-light">Dashboard /</span> Kelola Siswa
         </h4>
 
         <!-- Basic Bootstrap Table -->
+        <?= $this->include('components/alerts'); ?>
         <div class="card">
-            <h5 class="card-header">Table Basic</h5>
+            <div class="card-header">
+                <div class="add-button-container">
+                    <h5>Data Siswa</h5>
+                    <a href="<?= base_url('admin/kelola_siswa/new'); ?>" class="btn btn-primary add-button">
+                        <span class="tf-icons bx bx-plus-circle"></span>&nbsp;Tambah Siswa
+                    </a>
+                </div>
+            </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
@@ -30,27 +40,61 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                        <?php $i=1; ?>
+                        <?php foreach($dataSiswa as $item) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>Albert Cook</td>
-                            <td> 909898909 </td>
-                            <td> 07-09-2001</td>
-                            <td> XI</td>
-                            <td>2022 </td>
-                            <td> jpg</td>
+                            <td><?= $i++ ?></td>
+                            <td><?= $item['nama_siswa'] ?></td>
+                            <td><?= $item['nis'] ?></td>
+                            <td><?= $item['tgl_lahir'] ?></td>
+                            <td><?= $item['id_kelas'] ?></td>
+                            <td><?= $item['id_tahun_ajar'] ?></td>
+                            <td><?= $item['foto'] ?></td>
                             <td>
                                 <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url('admin/kelola_siswa/edit') ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                        <a class="dropdown-item"
+                                            href="<?= base_url('admin/kelola_siswa/edit/' . $item['id_siswa']) ?>"><i
+                                                class="bx bx-edit-alt me-2"></i> Edit</a>
+                                        <a class="dropdown-item" data-bs-toggle="modal"
+                                            data-bs-target="#confirmation-modal-<?= $item['id_siswa'] ?>">
+                                            <i class="bx bx-trash me-2"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
 
-        <?= $this->endSection(); ?>
+</div>
+
+<!-- Modal -->
+<?php foreach ($dataSiswa as $key => $item) : ?>
+<div class="modal fade" id="confirmation-modal-<?= $item['id_siswa'] ?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Hapus Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="mb-20">Apakah Anda yakin ingin menghapus data siswa ini?</h4>
+                <i class="bx bx-trash"></i>
+                <p class="mb-30" style="color: red;">Data siswa yang dihapus tidak dapat dikembalikan.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="<?= base_url('admin/kelola_siswa/delete/' . $item['id_siswa']) ?>"
+                    class="btn btn-primary">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+<?= $this->endSection(); ?>

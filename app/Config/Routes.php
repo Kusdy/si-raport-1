@@ -26,15 +26,27 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     //kelola siswa
     $routes->get('kelola_siswa', 'Admin\KelSiswaController::index');
-    $routes->get('kelola_siswa/edit', 'Admin\KelSiswaController::edit');
+    $routes->get('kelola_siswa/new', 'Admin\KelSiswaController::new');
+    $routes->post('kelola_siswa/add', 'Admin\KelSiswaController::add');
+    $routes->get('kelola_siswa/edit/(:num)', 'Admin\KelSiswaController::edit/$1');
+    $routes->post('kelola_siswa/update/(:num)', 'Admin\KelSiswaController::update/$1');
+    $routes->get('kelola_siswa/delete/(:num)', 'Admin\KelSiswaController::delete/$1');
 
     //kelola guru
     $routes->get('kelola_guru', 'Admin\KelGuruController::index');
-    $routes->get('kelola_guru/edit', 'Admin\KelGuruController::edit');
+    $routes->get('kelola_guru/new', 'Admin\KelGuruController::new');
+    $routes->post('kelola_guru/add', 'Admin\KelGuruController::add');
+    $routes->get('kelola_guru/edit/(:num)', 'Admin\KelGuruController::edit/$1');
+    $routes->post('kelola_guru/update/(:num)', 'Admin\KelGuruController::update/$1');
+    $routes->get('kelola_guru/delete/(:num)', 'Admin\KelGuruController::delete/$1');
 
     //kelola walikelas
     $routes->get('kelola_walikelas', 'Admin\KelWalikelasController::index');
-    $routes->get('kelola_walikelas/edit', 'Admin\KelWalikelasController::edit');
+    $routes->get('kelola_walikelas/new', 'Admin\KelWalikelasController::new');
+    $routes->post('kelola_walikelas/add', 'Admin\KelWalikelasController::add');
+    $routes->get('kelola_walikelas/edit/(:num)', 'Admin\KelWalikelasController::edit/$1');
+    $routes->post('kelola_walikelas/update/(:num)', 'Admin\KelWalikelasController::update/$1');
+    $routes->get('kelola_walikelas/delete/(:num)', 'Admin\KelWalikelasController::delete/$1');
 
     //kelola kelas (UDAH JADI)
     $routes->get('kelola_kelas', 'Admin\KelKelasController::index');
