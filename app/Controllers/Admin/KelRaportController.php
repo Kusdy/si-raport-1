@@ -12,9 +12,19 @@ class KelRaportController extends BaseController
 
         $data = [
             'title' => 'Data User',
-            'active' => 'kelola raport',
+            'active' => ' raport',
 
         ];
         return view('pages/admin/kelola_raport/index', $data);
+    }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Data User',
+            'active' => 'raport',
+
+        ];
+        return view('pages/admin/kelola_raport/edit', $data);
     }
 }

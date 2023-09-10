@@ -17,4 +17,14 @@ class KelMapelController extends BaseController
         ];
         return view('pages/admin/kelola_mapel/index', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'Data User',
+            'active' => 'mapel',
+
+        ];
+        return view('pages/admin/kelola_mapel/edit', $data);
+    }
 }

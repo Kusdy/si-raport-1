@@ -1,6 +1,56 @@
 <?= $this->extend('layouts/dashboard/main'); ?>
 <?= $this->section('content'); ?>
 
-<h1> ini adalah halaman kelola mapel</h1>
+<div class="content-wrapper">
 
-<?= $this->endSection(); ?>
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">Tables /</span> Kelola Mapel
+        </h4>
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Table Basic</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Guru</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Tanggal</th>
+                            <th>Nilai</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td>1</td>
+                            <td>Pa Nandar</td>
+                            <td>Dayat</td>
+                            <td>IX</td>
+                            <td>Sejarah</td>
+                            <td>08-09-2023</td>
+                            <td>90</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?= base_url('admin/kelola_mapel/edit') ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <?= $this->endSection(); ?>

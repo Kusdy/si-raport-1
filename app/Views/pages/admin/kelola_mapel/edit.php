@@ -9,7 +9,7 @@
 
 
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Forms /</span> Tambah Siswa
+            <span class="text-muted fw-light">Forms /</span> Tambah Mapel
         </h4>
         <div class="col-xl-12 mx-auto">
             <!-- HTML5 Inputs -->
@@ -17,13 +17,13 @@
                 <h5 class="card-header">HTML5 Inputs</h5>
                 <div class="card-body">
                     <div class="mb-3 row">
-                        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Siswa</label>
+                        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Guru</label>
                         <div class="col-md-10">
                             <input class="form-control" type="text" value="Sneat" id="html5-text-input" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Guru</label>
+                        <label for="html5-text-input" class="col-md-2 col-form-label">Nama Siswa</label>
                         <div class="col-md-10">
                             <input class="form-control" type="text" value="Sneat" id="html5-text-input" />
                         </div>
@@ -37,6 +37,29 @@
                                 <option value="2">XII</option>
                                 <option value="3">IX</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="largeSelect" class="col-md-2 col-form-label">Mata Pelajaran</label>
+                        <div class="col-md-10">
+                            <select id="largeSelect" class="form-select">
+                                <option selected disabled>Pilih Mata Pelajaran</option>
+                                <option value="1">MTK</option>
+                                <option value="2">Bahasa Indonesia</option>
+                                <option value="3">Sejarah</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="html5-date-input" class="col-md-2 col-form-label">Tanggal Lahir</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="html5-number-input" class="col-md-2 col-form-label">Nilai</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" value="18" id="html5-number-input" />
                         </div>
                     </div>
                     <div class="mb-3 row">

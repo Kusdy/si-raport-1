@@ -1,5 +1,5 @@
 <?php if (session()->has('success')): ?>
-<div class="alert alert-success" role="alert" id="successAlert">
+<div class="alert alert-primary" role="alert" id="successAlert">
     <?= session('success') ?>
 </div>
 <script>

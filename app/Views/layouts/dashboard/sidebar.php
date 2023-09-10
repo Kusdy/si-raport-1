@@ -65,9 +65,9 @@
 			</a>
 		</li>
 
-		<li class="menu-item">
+		<li class="menu-item <?= ($active == 'siswa' || $active == 'guru' || $active == 'walikelas') ? 'active open' : '' ?>">
 			<a href="javascript:void(0);" class="menu-link menu-toggle">
-				<i class="menu-icon tf-icons bx bx-dock-top"></i>
+				<i class="menu-icon tf-icons far fa-address-card"></i>
 				<div data-i18n="Account Settings">Kelola Pengguna</div>
 			</a>
 			<ul class="menu-sub">
@@ -90,55 +90,55 @@
 		</li>
 
 		<!-- Components -->
-		<li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+		<li class="menu-header small text-uppercase"><span class="menu-header-text">Kelola Data</span></li>
 		<!-- Cards -->
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_kelas') ?>" class="menu-link <?= ($active == 'siswa') ? 'active' : '' ?>">
-				<i class="menu-icon tf-icons bx bx-collection"></i>
+		<li class="menu-item <?= ($active == 'kelas') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_kelas') ?>" class="menu-link">
+				<i class="menu-icon tf-icons bx bxs-graduation"></i>
 				<div data-i18n="Basic">Kelola Kelas</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link <?= ($active == 'guru') ? 'active' : '' ?>">
-				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola Mapel</div>
+		<li class="menu-item <?= ($active == 'semester') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_semester') ?>" class="menu-link">
+				<i class="menu-icon tf-icons bx bx-list-ol"></i>
+				<div data-i18n="Basic">Kelola Semester</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_raport') ?>" class="menu-link <?= ($active == 'raport') ? 'active' : '' ?>">
-				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola Raport</div>
+		<li class="menu-item <?= ($active == 'tahun') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_tahun_ajar') ?>" class="menu-link">
+				<i class="menu-icon tf-icons bx bx-book-reader"></i>
+				<div data-i18n="Basic">Kelola Tahun Ajar</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_kd') ?>" class="menu-link <?= ($active == 'kd') ? 'active' : '' ?>">
+		<li class="menu-item <?= ($active == 'mapel') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola KD</div>
+				<div data-i18n="Basic">Kelola Mapel (Belum)</div>
 			</a>
 		</li>
 
 		<!-- Forms & Tables -->
-		<li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
+		<li class="menu-header small text-uppercase"><span class="menu-header-text">Set Data</span></li>
 		<!-- Forms -->
 		<!-- Tables -->
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_set_tahun') ?>" class="menu-link <?= ($active == 'set tahun ajar') ? 'active' : '' ?>">
+		<li class="menu-item <?= ($active == 'set tahun ajar') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_set_tahun') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set Tahun Ajar</div>
+				<div data-i18n="Tables">Kelola Set KD (Belum)</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_set_kelas') ?>" class="menu-link <?= ($active == 'set kelas') ? 'active' : '' ?>">
-				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set Kelas</div>
+		<li class="menu-item <?= ($active == 'raport') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_raport') ?>" class="menu-link">
+				<i class="menu-icon tf-icons bx bx-collection"></i>
+				<div data-i18n="Basic">Kelola Set Raport (Belum)</div>
 			</a>
 		</li>
-		<li class="menu-item">
-			<a href="<?= base_url('admin/kelola_set_mapel') ?>" class="menu-link <?= ($active == 'set mapel') ? 'active' : '' ?>">
+		<li class="menu-item <?= ($active == 'set mapel') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_set_mapel') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set Mapel</div>
+				<div data-i18n="Tables">Kelola Set Mapel (Belum)</div>
 			</a>
 		</li>
-
+		<li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
 	</ul>
 </aside>
