@@ -28,9 +28,11 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-book-add"></i></span>
                                     <select class="form-select" name="id_kelas">
-                                        <option>Pilih kelas</option>
-                                        <option value="1">Kelas 1</option>
-                                        <option value="2">Kelas 2</option>
+                                        <option selected disabled>Pilih kelas</option>
+                                        <?php foreach ($kelasOption as $item): ?>
+                                        <option value="<?= $item['id_kelas'] ?>">
+                                            <?= $item['tingkat'] ?><?= $item['kelas']?>-<?= $item['jurusan']?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -43,9 +45,12 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-list-ol"></i></span>
                                     <select class="form-select" name="id_tahun_ajar">
-                                        <option>Pilih Tahun Ajaran</option>
-                                        <option value="1">2023/2024</option>
-                                        <option value="2">2024/2025</option>
+                                        <option selected disabled>Pilih Tahun Ajar</option>
+                                        <?php foreach ($semesterOption as $semesterId => $semesterLabel): ?>
+                                        <option value="<?= $semesterId ?>">
+                                            <?= $semesterLabel ?>
+                                        </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

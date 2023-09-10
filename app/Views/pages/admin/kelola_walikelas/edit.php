@@ -29,12 +29,12 @@
                                             class="bx bx-card"></i></span>
                                     <select class="form-select" name="id_kelas">
                                         <option selected disabled>Pilih kelas</option>
-                                        <option value="1" <?php if($waliKelas['id_kelas'] === '1') echo 'selected'; ?>>
-                                            Kelas
-                                            1</option>
-                                        <option value="2" <?php if($waliKelas['id_kelas'] === '2') echo 'selected'; ?>>
-                                            Kelas
-                                            2</option>
+                                        <?php foreach ($kelasOption as $item): ?>
+                                        <option value="<?= $item['id_kelas'] ?>"
+                                            <?php if($item['id_kelas'] == $waliKelas['id_kelas']) echo 'selected' ?>>
+                                            <?= $item['tingkat'] ?><?= $item['kelas']?>-<?= $item['jurusan']?>
+                                        </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

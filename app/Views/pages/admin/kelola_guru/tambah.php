@@ -26,9 +26,11 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-book-add"></i></span>
                                     <select class="form-select" name="id_kelas">
-                                        <option>Pilih kelas</option>
-                                        <option value="1">Kelas 1</option>
-                                        <option value="2">Kelas 2</option>
+                                        <option selected disabled>Pilih kelas</option>
+                                        <?php foreach ($kelasOption as $item): ?>
+                                        <option value="<?= $item['id_kelas'] ?>">
+                                            <?= $item['tingkat'] ?><?= $item['kelas']?>-<?= $item['jurusan']?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -149,7 +151,7 @@
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary me-2">Simpan</button>
                                 <button type="reset" class="btn btn-danger me-2">Reset</button>
-                                <a href="<?= base_url('admin/kelola_siswa');?>" class="btn btn-warning me-2">Back</a>
+                                <a href="<?= base_url('admin/kelola_guru');?>" class="btn btn-warning me-2">Back</a>
                                 <!-- <button type="submit" class="btn btn-primary">Save</button> -->
                             </div>
                         </div>

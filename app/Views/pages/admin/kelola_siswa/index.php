@@ -1,8 +1,6 @@
 <?= $this->extend('layouts/dashboard/main'); ?>
 <?= $this->section('content'); ?>
 
-<?= $this->include('components/sweetAlerts'); ?>
-
 <div class="content-wrapper">
 
     <!-- Content -->
@@ -26,8 +24,8 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table">
-                    <thead class="table-dark">
+                <table class="table table-striped">
+                    <thead class="table-light">
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
@@ -46,9 +44,9 @@
                             <td><?= $i++ ?></td>
                             <td><?= $item['nama_siswa'] ?></td>
                             <td><?= $item['nis'] ?></td>
-                            <td><?= $item['tgl_lahir'] ?></td>
-                            <td><?= $item['id_kelas'] ?></td>
-                            <td><?= $item['id_tahun_ajar'] ?></td>
+                            <td><?= date('d/m/Y', strtotime($item['tgl_lahir'])) ?></td>
+                            <td><?= $item['tingkat'] ?><?= $item['kelas'] ?>-<?= $item['jurusan'] ?></td>
+                            <td><span class="badge bg-label-primary me-1"><b><?= $item['tahun']; ?></b></span></td>
                             <td><?= $item['foto'] ?></td>
                             <td>
                                 <div class="dropdown">
