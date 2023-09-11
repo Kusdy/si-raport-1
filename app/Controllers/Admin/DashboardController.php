@@ -41,22 +41,21 @@ class DashboardController extends BaseController
 
     public function search()
     {
-    // Ambil inputan pencarian dari form
+        // Ambil inputan pencarian dari form
         $searchTerm = $this->request->getVar('search');
 
-    // Inisialisasi model-model
+        // Inisialisasi model-model
         $userModel = new UserModel();
         $kelasModel = new KelasModel();
         $semesterModel = new SemesterModel();
         $tahunModel = new TahunModel();
 
-    // Inisialisasi array kosong untuk hasil pencarian
+        // Inisialisasi array kosong untuk hasil pencarian
         $user = [];
         $kelas = [];
         $semester = [];
         $tahun = [];
 
-    // Cari data dari model sesuai dengan kata kunci pencarian jika $searchTerm tidak null
         // Cari data dari model sesuai dengan kata kunci pencarian jika $searchTerm tidak null
         if ($searchTerm !== null) {
             $user = $userModel->orLike('nama', $searchTerm)
@@ -72,7 +71,7 @@ class DashboardController extends BaseController
             ->findAll();
             $tahun = $tahunModel->orLike('tahun', $searchTerm)->findAll();
 
-        // Cek jika hasil pencarian ditemukan
+            // Cek jika hasil pencarian ditemukan
             if (!empty($user)) {
             // Jika ditemukan, redirect ke halaman user
                 return redirect()->to('admin/data-pengguna');

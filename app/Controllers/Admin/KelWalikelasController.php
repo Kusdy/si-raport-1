@@ -15,13 +15,13 @@ class KelWalikelasController extends BaseController
         $walikelasModel = new WaliKelasModel();
         // $waliKelas = $walikelasModel->findAll();
         $waliKelasWithGuru = $walikelasModel->select('tb_wali_kelas.*, tb_guru.nama_guru, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
-                                                ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
-                                                ->join('tb_kelas', 'tb_wali_kelas.id_kelas = tb_kelas.id_kelas')
-                                                ->findAll();
+        ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
+        ->join('tb_kelas', 'tb_wali_kelas.id_kelas = tb_kelas.id_kelas')
+        ->findAll();
         
         $data = [
             'title'     => 'Data Wali Kelas',
-            'active'    => 'kelola wali kelas',
+            'active'    => 'kelas',
             'waliKelas' => $waliKelasWithGuru,
 
         ];
@@ -39,7 +39,7 @@ class KelWalikelasController extends BaseController
 
         $data = [
             'title' => 'Tambah Data Wali Kelas',
-            'active' => 'wali kelas',
+            'active' => 'kelas',
             'guruOption'    => $guruOption,
             'kelasOption'    => $kelasOption,
         ];
@@ -88,7 +88,7 @@ class KelWalikelasController extends BaseController
 
         $data = [
             'title'     => 'Edit Data Wali Kelas',
-            'active'    => 'wali kelas',
+            'active'    => 'kelas',
             'waliKelas' => $walikelasModel->find($id),
             'guruOption'=> $guruOption,   
             'kelasOption'=> $kelasOption,   
