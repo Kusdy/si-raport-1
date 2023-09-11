@@ -10,12 +10,16 @@ class AuthFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
+        if (!session()->get('auth')) {
+            return redirect()->to('login')->with('success', 'Silahkan Login!');
+        }
+
         $userRole = session()->get('role');
 
         $uri = service('uri');
         $requestedPage = $uri->getSegment(1);
 
-        $allowedPagesWithoutRoleCheck = ['logout'];
+        $allowedPagesWithoutRoleCheck = ['logout', '/'];
 
         $allowedPages = [
             'Admin' => ['admin', 'admin/dashboard'],
@@ -25,7 +29,7 @@ class AuthFilter implements FilterInterface
             'Kepala sekolah' => ['kepsek', 'kepsek/dashboard'],
         ];
 
-        if (!in_array($requestedPage, $allowedPagesWithoutRoleCheck) && !in_array($requestedPage, $allowedPages[$userRole])) {
+        if (!isset($userRole) || (!in_array($requestedPage, $allowedPagesWithoutRoleCheck) && !in_array($requestedPage, $allowedPages[$userRole]))) {
             $userRole = strtolower($userRole);
             return redirect()->to($userRole . '/dashboard')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini');
         }
