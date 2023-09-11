@@ -1,7 +1,6 @@
 <?= $this->extend('layouts/dashboard/main'); ?>
 <?= $this->section('content'); ?>
 
-<?= $this->include('components/sweetAlerts'); ?>
 
 <div class="content-wrapper">
 
@@ -26,8 +25,8 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table">
-                    <thead class="table-dark">
+                <table class="table table-striped">
+                    <thead class="table-light">
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
@@ -41,7 +40,7 @@
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $item['nama_guru'] ?></td>
-                            <td><?= $item['id_kelas'] ?></td>
+                            <td><?= $item['tingkat'] ?><?= $item['kelas'] ?>-<?= $item['jurusan'] ?></td>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

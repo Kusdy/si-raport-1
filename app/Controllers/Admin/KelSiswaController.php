@@ -3,14 +3,21 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\KelasModel;
+use App\Models\SemesterModel;
 use App\Models\SiswaModel;
+use App\Models\TahunModel;
 
 class KelSiswaController extends BaseController
 {
     public function index()
     {   
         $modelSiswa = new SiswaModel(); 
-        $dataSiswa = $modelSiswa->findAll();
+         $dataSiswa = $modelSiswa
+            ->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan, tb_tahun_ajar.tahun')
+            ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
+            ->join('tb_tahun_ajar', 'tb_siswa.id_tahun_ajar = tb_tahun_ajar.id_thn_ajar')
+            ->findAll();
 
         $data = [
             'title' => 'Data Siswa',
@@ -22,9 +29,17 @@ class KelSiswaController extends BaseController
 
     public function new()
     {
+        $kelasModel = new KelasModel();
+        $tahunModel = new TahunModel();
+        $kelasOption = $kelasModel->findAll();
+        $semesterOption = $tahunModel->getSelectSemester();
+
         $data = [
-            'title' => 'Tambah Data Siswa',
-            'active' => 'siswa',
+            'title'         => 'Tambah Data Siswa',
+            'active'        => 'siswa',
+            'kelasOption'   => $kelasOption,
+            'semesterOption'   => $semesterOption,
+            // 'tahunOption'   => $tahunOption
 
         ];
         return view('pages/admin/kelola_siswa/tambah', $data);
@@ -75,10 +90,18 @@ class KelSiswaController extends BaseController
     public function edit($id)
     {
         $siswaModel = new SiswaModel();
+        $kelasModel = new KelasModel();
+        $tahunModel = new TahunModel();
+        $kelasOption = $kelasModel->findAll();
+        $tahunOption = $tahunModel->findAll();
+        $semesterOption = $tahunModel->getSelectSemester();
+
         $data = [
             'title'     => 'Edit Data Siswa',
             'active'    => 'siswa',
             'siswa'     => $siswaModel->find($id),
+            'kelasOption'   => $kelasOption,
+            'semesterOption'   => $semesterOption
         ];
         return view('pages/admin/kelola_siswa/edit', $data);
     }

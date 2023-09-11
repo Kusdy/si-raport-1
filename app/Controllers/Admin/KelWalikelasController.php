@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\GuruModel;
+use App\Models\KelasModel;
+use App\Models\TahunModel;
 use App\Models\WaliKelasModel;
 
 class KelWalikelasController extends BaseController
@@ -12,10 +14,11 @@ class KelWalikelasController extends BaseController
     {
         $walikelasModel = new WaliKelasModel();
         // $waliKelas = $walikelasModel->findAll();
-         $waliKelasWithGuru = $walikelasModel->select('tb_wali_kelas.*, tb_guru.nama_guru')
+        $waliKelasWithGuru = $walikelasModel->select('tb_wali_kelas.*, tb_guru.nama_guru, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
                                                 ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
+                                                ->join('tb_kelas', 'tb_wali_kelas.id_kelas = tb_kelas.id_kelas')
                                                 ->findAll();
-
+        
         $data = [
             'title'     => 'Data Wali Kelas',
             'active'    => 'kelola wali kelas',
@@ -30,10 +33,15 @@ class KelWalikelasController extends BaseController
         $guruModel = new GuruModel();
         $guruOption = $guruModel->findAll();
 
+        $kelasModel = new KelasModel();
+        $tahunModel = new TahunModel();
+        $kelasOption = $kelasModel->findAll();
+
         $data = [
             'title' => 'Tambah Data Wali Kelas',
             'active' => 'wali kelas',
-            'guruOption'    => $guruOption
+            'guruOption'    => $guruOption,
+            'kelasOption'    => $kelasOption,
         ];
         return view('pages/admin/kelola_walikelas/tambah', $data);
     }
@@ -74,11 +82,16 @@ class KelWalikelasController extends BaseController
         $walikelasModel = new WaliKelasModel();
         $guruModel = new GuruModel();
         $guruOption = $guruModel->findAll();
+
+        $kelasModel = new KelasModel();
+        $kelasOption = $kelasModel->findAll();
+
         $data = [
             'title'     => 'Edit Data Wali Kelas',
             'active'    => 'wali kelas',
             'waliKelas' => $walikelasModel->find($id),
-            'guruOption'=> $guruOption   
+            'guruOption'=> $guruOption,   
+            'kelasOption'=> $kelasOption,   
         ];
         return view('pages/admin/kelola_walikelas/edit', $data);
     }

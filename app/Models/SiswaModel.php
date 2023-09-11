@@ -9,10 +9,6 @@ class SiswaModel extends Model
     // protected $DBGroup          = 'default';
     protected $table            = 'tb_siswa';
     protected $primaryKey       = 'id_siswa';
-    // protected $useAutoIncrement = true;
-    // protected $returnType       = 'array';
-    // protected $useSoftDeletes   = false;
-    // protected $protectFields    = true;
      protected $allowedFields = [
         'id_kelas',
         'id_tahun_ajar',
@@ -26,8 +22,6 @@ class SiswaModel extends Model
         'alamat',
         'no_hp',
         'foto',
-        // 'created_at',
-        // 'updated_at',
     ];
 
     // Dates
@@ -53,4 +47,14 @@ class SiswaModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+
+    public function getSiswaWithTahunAjar()
+    {
+        // // Lakukan join antara tb_siswa dan tb_tahun_ajar berdasarkan id_th_ajar
+        // return $this->db->table($this->table)
+        //     ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
+        //     ->select('tb_wali_kelas.*, tb_guru.nama_guru')
+        //     ->get()
+        //     ->getResultArray();
+    }
 }

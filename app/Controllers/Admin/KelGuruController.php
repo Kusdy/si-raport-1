@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\GuruModel;
+use App\Models\KelasModel;
+use App\Models\TahunModel;
 
 class KelGuruController extends BaseController
 {
@@ -22,10 +24,16 @@ class KelGuruController extends BaseController
 
     public function new(){
 
+        $kelasModel = new KelasModel();
+        $tahunModel = new TahunModel();
+        $kelasOption = $kelasModel->findAll();
+        $semesterOption = $tahunModel->getSelectSemester();
+
         $data = [
             'title' => 'Tambah Data Guru',
             'active' => 'guru',
-
+            'kelasOption'   => $kelasOption,
+            'semesterOption'   => $semesterOption,
         ];
         return view('pages/admin/kelola_guru/tambah', $data);
     }
@@ -74,10 +82,14 @@ class KelGuruController extends BaseController
     public function edit($id)
     {
         $guruModel = new GuruModel();
+        $kelasModel = new KelasModel();
+        $kelasOption = $kelasModel->findAll();
+
         $data = [
             'title'     => 'Edit Data Guru',
             'active'    => 'guru',
             'guru'     => $guruModel->find($id),
+            'kelasOption' => $kelasOption
         ];
         return view('pages/admin/kelola_guru/edit', $data);
     }
