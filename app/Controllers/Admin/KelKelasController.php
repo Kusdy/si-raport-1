@@ -12,6 +12,10 @@ class KelKelasController extends BaseController
         $model = new KelasModel();
         $kelas = $model->findAll();
 
+        if ($this->request->getMethod() === 'post') {
+            return redirect()->to('admin/search');
+        }
+
         $data = [
             'title' => 'Data Kelas',
             'kelas' => $kelas
