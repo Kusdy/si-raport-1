@@ -12,6 +12,10 @@ class KelSemesterController extends BaseController
         $model = new SemesterModel();
         $semester = $model->findAll();
 
+        if ($this->request->getMethod() === 'post') {
+            return redirect()->to('admin/search');
+        }
+
         $data = [
             'title' => 'Data Semester',
             'semester' => $semester

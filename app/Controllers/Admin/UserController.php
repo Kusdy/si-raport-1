@@ -12,6 +12,10 @@ class UserController extends BaseController
         $model = new UserModel();
         $dataUser = $model->findAll();
 
+        if ($this->request->getMethod() === 'post') {
+            return redirect()->to('admin/search');
+        }
+
         $data = [
             'title' => 'Data Pengguna',
             'active' => 'pengguna',

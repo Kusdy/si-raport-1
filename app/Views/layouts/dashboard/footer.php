@@ -6,23 +6,13 @@
 				document.write(new Date().getFullYear());
 			</script>
 			, by
-			<a href="https://themeselection.com" class="footer-link fw-bolder">Circle S.T</a>
+			<a href="https://github.com/mosyahi" target="blank" class="footer-link fw-bolder">Circle S.T</a>
 		</div>
 		<div>
-			<a href="#" class="footer-link me-4">License</a>
-			<a href="#" class="footer-link me-4">More Themes</a>
-
-			<a
-			href="#" 
-			class="footer-link me-4"
-			>Documentation</a
-			>
-
-			<a
-			href="#" 
-			class="footer-link me-4"
-			>Support</a
-			>
+			<a href="https://github.com/mosyahi" target="blank" class="footer-link me-4">License</a>
+			<a href="https://github.com/mosyahi" target="blank" class="footer-link me-4">More Themes</a>
+			<a href="https://github.com/mosyahi" target="blank" class="footer-link me-4" >Documentation</a>
+			<a href="https://github.com/mosyahi" target="blank" class="footer-link me-4">Support</a>
 		</div>
 	</div>
 </footer>

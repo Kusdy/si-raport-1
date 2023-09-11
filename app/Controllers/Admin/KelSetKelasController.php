@@ -9,6 +9,9 @@ class KelSetKelasController extends BaseController
 {
     public function index()
     {
+        if ($this->request->getMethod() === 'post') {
+            return redirect()->to('admin/search');
+        }
 
         $data = [
             'title' => 'Data User',

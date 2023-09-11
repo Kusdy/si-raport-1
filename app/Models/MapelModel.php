@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class MapelModel extends Model
 {
+<<<<<<< HEAD
     // protected $DBGroup          = 'default';
     protected $table            = 'tb_mapel';
     protected $primaryKey       = 'id_mapel';
@@ -39,3 +40,9 @@ class MapelModel extends Model
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
 }
+=======
+    protected $table = 'tb_kelas';
+    protected $primaryKey = 'id_kelas';
+    protected $allowedFields = ['nama_kelas', 'created_at'];
+}
+>>>>>>> d1e3e915431379b9ed944897a2301e5003c50f91

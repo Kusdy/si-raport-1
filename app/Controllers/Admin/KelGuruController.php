@@ -16,7 +16,7 @@ class KelGuruController extends BaseController
 
         $data = [
             'title'     => 'Data User',
-            'active'    => 'kelola guru',
+            'active'    => 'guru',
             'dataGuru'  => $guru,
         ];
         return view('pages/admin/kelola_guru/index', $data);
@@ -70,7 +70,7 @@ class KelGuruController extends BaseController
             }
                 // Simpan data ke database
             $guruModel->insert($data);
-        
+            
 
             return redirect()->to(site_url('admin/kelola_guru'))->with('success', 'Data guru berhasil ditambahkan.');
         } else {

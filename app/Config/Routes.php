@@ -15,6 +15,7 @@ $routes->get('logout', 'Auth\LoginController::logout');
 // ADMIN AKSES
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Admin\DashboardController::index');
+    $routes->post('search', 'Admin\DashboardController::search');
 
     //data pengguna (UDAH JADI)
     $routes->get('data-pengguna', 'Admin\UserController::index');

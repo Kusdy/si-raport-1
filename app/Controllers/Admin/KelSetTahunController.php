@@ -26,6 +26,10 @@ class KelSetTahunController extends BaseController
             }
         }
 
+        if ($this->request->getMethod() === 'post') {
+            return redirect()->to('admin/search');
+        }
+
         $data = [
             'title' => 'Data Kelas',
             'tahun' => $tahun,
