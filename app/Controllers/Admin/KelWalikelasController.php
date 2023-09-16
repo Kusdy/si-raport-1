@@ -21,7 +21,7 @@ class KelWalikelasController extends BaseController
         
         $data = [
             'title'     => 'Data Wali Kelas',
-            'active'    => 'kelas',
+            'active'    => 'walikelas',
             'waliKelas' => $waliKelasWithGuru,
 
         ];
@@ -39,7 +39,7 @@ class KelWalikelasController extends BaseController
 
         $data = [
             'title' => 'Tambah Data Wali Kelas',
-            'active' => 'kelas',
+            'active' => 'walikelas',
             'guruOption'    => $guruOption,
             'kelasOption'    => $kelasOption,
         ];
@@ -88,7 +88,7 @@ class KelWalikelasController extends BaseController
 
         $data = [
             'title'     => 'Edit Data Wali Kelas',
-            'active'    => 'kelas',
+            'active'    => 'walikelas',
             'waliKelas' => $walikelasModel->find($id),
             'guruOption'=> $guruOption,   
             'kelasOption'=> $kelasOption,   

@@ -6,7 +6,16 @@ use CodeIgniter\Model;
 
 class MapelModel extends Model
 {
-    protected $table = 'tb_kelas';
-    protected $primaryKey = 'id_kelas';
-    protected $allowedFields = ['nama_kelas', 'created_at'];
+
+    protected $table = 'tb_mapel';
+    protected $primaryKey = 'id_mapel';
+    protected $allowedFields = [
+        'id_kd',
+        'id_guru',
+        'id_kelas',
+        'mata_pelajaran',
+    ];
+
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 }
