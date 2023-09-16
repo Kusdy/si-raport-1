@@ -69,7 +69,10 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     //kelola mapel
     $routes->get('kelola_mapel', 'Admin\KelMapelController::index');
-    $routes->get('kelola_mapel/edit', 'Admin\KelMapelController::edit');
+    $routes->post('kelola_mapel/add', 'Admin\KelMapelController::add');
+    $routes->get('kelola_mapel/edit/(:num)', 'Admin\KelMapelController::edit/$1');
+    $routes->post('kelola_mapel/update/(:num)', 'Admin\KelMapelController::update/$1');
+    $routes->get('kelola_mapel/delete/(:num)', 'Admin\KelMapelController::delete/$1');
 
     //kelola raport
     $routes->get('kelola_raport', 'Admin\KelRaportController::index');

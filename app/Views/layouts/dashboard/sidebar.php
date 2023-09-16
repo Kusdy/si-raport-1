@@ -113,7 +113,7 @@
 		<li class="menu-item <?= ($active == 'mapel') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola Mapel (Belum)</div>
+				<div data-i18n="Basic">Kelola Mapel</div>
 			</a>
 		</li>
 
@@ -121,6 +121,12 @@
 		<li class="menu-header small text-uppercase"><span class="menu-header-text">Set Data</span></li>
 		<!-- Forms -->
 		<!-- Tables -->
+		<li class="menu-item <?= ($active == 'set mapel') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_set_mapel') ?>" class="menu-link">
+				<i class="menu-icon tf-icons bx bx-table"></i>
+				<div data-i18n="Tables">Kelola Set Kelas <b style="color: red;">(On Progres Bang)</b></div>
+			</a>
+		</li>
 		<li class="menu-item <?= ($active == 'set tahun ajar') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_set_tahun') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
@@ -131,12 +137,6 @@
 			<a href="<?= base_url('admin/kelola_raport') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
 				<div data-i18n="Basic">Kelola Set Raport (Belum)</div>
-			</a>
-		</li>
-		<li class="menu-item <?= ($active == 'set mapel') ? 'active' : '' ?>">
-			<a href="<?= base_url('admin/kelola_set_mapel') ?>" class="menu-link">
-				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set Mapel (Belum)</div>
 			</a>
 		</li>
 		<li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
