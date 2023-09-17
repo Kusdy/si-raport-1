@@ -94,6 +94,50 @@ class SetKdController extends BaseController
         return redirect()->to('admin/kelola_kd')->with('success', 'Data kompetensi dasar berhasil ditambahkan.');
     }
 
+    public function update($id)
+    {
+        $model = new KdModel();
+        
+        $validationRules = [
+            'id_mapel' => 'required',
+            'indikator_kd' => 'required',
+            'deskripsi_kd' => 'required',
+            'materi_pembelajaran' => 'required',
+            'penilaian' => 'required',
+        ];
+
+    // Validasi data
+        if (!$this->validate($validationRules)) {
+            $errorMessages = implode('<br>', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('error', $errorMessages);
+        }
+
+    // Ambil data dari form
+        $id_mapel = $this->request->getPost('id_mapel');
+        $indikator_kd = $this->request->getPost('indikator_kd');
+        $deskripsi_kd = $this->request->getPost('deskripsi_kd');
+        $materi_pembelajaran = $this->request->getPost('materi_pembelajaran');
+        $penilaian = $this->request->getPost('penilaian');
+
+    // Data yang akan diperbarui
+        $data = [
+            'id_mapel' => $id_mapel,
+            'indikator_kd' => $indikator_kd,
+            'deskripsi_kd' => $deskripsi_kd,
+            'materi_pembelajaran' => $materi_pembelajaran,
+            'penilaian' => $penilaian,
+        ];
+
+    // Lakukan query update
+        $result = $model->update($id, $data);
+
+        if (!$result) {
+            return redirect()->to('admin/kelola_kd')->withInput()->with('error', 'Gagal memperbarui data.');
+        }
+
+        return redirect()->to('admin/kelola_kd')->with('success', 'Data kompetensi dasar berhasil diperbarui.');
+    }
+
     public function delete($id)
     {
         $kdModel = new KdModel();

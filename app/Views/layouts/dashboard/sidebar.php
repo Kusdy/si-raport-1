@@ -130,7 +130,7 @@
 		<li class="menu-item <?= ($active == 'kd') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_kd') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set KD <b style="color: red;">(On Progres)</b></div>
+				<div data-i18n="Tables">Kelola Set KD</div>
 			</a>
 		</li>
 		<li class="menu-item <?= ($active == 'raport') ? 'active' : '' ?>">
