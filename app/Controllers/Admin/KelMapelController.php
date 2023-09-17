@@ -26,7 +26,7 @@ class KelMapelController extends BaseController
 
         $data = [
             'title'          => 'Data Mapel',
-            'active'         => 'kelola mapel',
+            'active'         => 'kelola_mapel',
             'mapel'          => $mapelWithGuru,
             'guruOption'     => $guruOption,
         ];

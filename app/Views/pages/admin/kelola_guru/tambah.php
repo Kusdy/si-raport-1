@@ -43,7 +43,7 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-list-ol"></i></span>
                                     <select class="form-select" name="id_mapel">
-                                        <option>Pilih Tahun Ajaran</option>
+                                        <option>Pilih Mata Pelajaran</option>
                                         <option value="1">Bahasa Indonesia</option>
                                         <option value="2">Bahasa Inggris</option>
                                     </select>

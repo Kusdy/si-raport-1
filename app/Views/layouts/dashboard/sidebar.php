@@ -110,7 +110,7 @@
 				<div data-i18n="Basic">Kelola Tahun Ajar</div>
 			</a>
 		</li>
-		<li class="menu-item <?= ($active == 'mapel') ? 'active' : '' ?>">
+		<li class="menu-item <?= ($active == 'kelola_mapel') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
 				<div data-i18n="Basic">Kelola Mapel</div>
