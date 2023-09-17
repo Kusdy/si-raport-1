@@ -85,6 +85,17 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 // GURU AKSES
 $routes->group('guru', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Guru\DashboardController::index');
+
+    //kelas (UDAH JADI)
+    $routes->get('kelas', 'Guru\KelasController::index');
+    $routes->post('kelas/add', 'Guru\KelasController::add');
+    $routes->post('kelas/update/(:num)', 'Guru\KelasController::update/$1');
+    $routes->get('kelas/delete/(:num)', 'Guru\KelasController::delete/$1');
+
+    //nilai
+    $routes->get('nilai', 'Guru\NilaiController::index');
+    $routes->post('search', 'Guru\NilaiController::search');
+    $routes->post('pagination', 'Guru\NilaiController::index');
 });
 
 // SISWA AKSES

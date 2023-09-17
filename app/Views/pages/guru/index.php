@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/dashboard/main'); ?>
+<?= $this->extend('layouts/dashboard-guru/main'); ?>
 <?= $this->section('content'); ?>
 
 <!-- Content wrapper -->

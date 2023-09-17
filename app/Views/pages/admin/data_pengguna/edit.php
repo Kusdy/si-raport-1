@@ -17,7 +17,7 @@
 				<div class="card mb-4">
 					<hr class="my-0">
 					<div class="card-body">
-						<form id="formAccountSettings" action="<?= base_url('admin/data-pengguna/update/'.$user['id_user']) ?>" method="POST">
+						<form id="formAccountSettings" action="<?= base_url('admin/data-pengguna/update/' . $user['id_user']) ?>" method="POST">
 							<div class="row">
 								<div class="mb-3 col-md-6">
 									<label for="firstName" class="form-label">Nama Lengkap</label>
@@ -30,7 +30,7 @@
 								<div class="mb-3 col-md-6">
 									<label class="form-label" for="password">Password</label>
 									<div class="input-group input-group-merge">
-										<input type="password" id="password" name="password" class="form-control" placeholder="password" value="<?= $user['password'] ?>" disabled />
+										<input type="password" id="password" name="password" class="form-control" placeholder="password" value="<?= str_repeat('*', min(strlen($user['password']), 8)) ?>" disabled />
 										<!-- <span class="input-group-text cursor-pointer" id="password-toggle"><i class="bx bx-hide"></i></span> -->
 									</div>
 								</div>
@@ -60,12 +60,12 @@
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('DOMContentLoaded', function() {
 		const passwordInput = document.getElementById('password');
 		const passwordToggle = document.getElementById('password-toggle');
 		const eyeIcon = passwordToggle.querySelector('i');
 
-		passwordToggle.addEventListener('click', function () {
+		passwordToggle.addEventListener('click', function() {
 			if (passwordInput.type === 'password') {
 				passwordInput.type = 'text';
 				eyeIcon.classList.remove('bx-hide');
