@@ -74,6 +74,14 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('kelola_mapel/update/(:num)', 'Admin\KelMapelController::update/$1');
     $routes->get('kelola_mapel/delete/(:num)', 'Admin\KelMapelController::delete/$1');
 
+    //Kelola Kompotensi Dasar (KD)
+    $routes->get('kelola_kd', 'Admin\SetKdController::index');
+    $routes->get('kelola_kd/new', 'Admin\SetKdController::new');
+    $routes->post('kelola_kd/add', 'Admin\SetKdController::add');
+    $routes->get('kelola_kd/edit/(:num)', 'Admin\SetKdController::edit/$1');
+    $routes->post('kelola_kd/update/(:num)', 'Admin\SetKdController::update/$1');
+    $routes->get('kelola_kd/delete/(:num)', 'Admin\SetKdController::delete/$1');
+
     //kelola raport
     $routes->get('kelola_raport', 'Admin\KelRaportController::index');
     $routes->get('kelola_raport/edit', 'Admin\KelRaportController::edit');

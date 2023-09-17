@@ -16,12 +16,11 @@ class WaliKelasModel extends Model
 
     public function getWaliKelasWithGuru()
     {
-        // Lakukan join antara tb_wali_kelas dan tb_guru berdasarkan id_guru
         return $this->db->table($this->table)
-            ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
-            ->select('tb_wali_kelas.*, tb_guru.nama_guru')
-            ->get()
-            ->getResultArray();
+        ->join('tb_guru', 'tb_wali_kelas.id_guru = tb_guru.id_guru')
+        ->select('tb_wali_kelas.*, tb_guru.nama_guru')
+        ->get()
+        ->getResultArray();
     }
     
 }
