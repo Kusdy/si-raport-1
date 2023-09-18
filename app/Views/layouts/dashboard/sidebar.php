@@ -110,7 +110,7 @@
 				<div data-i18n="Basic">Kelola Tahun Ajar</div>
 			</a>
 		</li>
-		<li class="menu-item <?= ($active == 'mapel') ? 'active' : '' ?>">
+		<li class="menu-item <?= ($active == 'kelola_mapel') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_mapel') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
 				<div data-i18n="Basic">Kelola Mapel</div>
@@ -127,10 +127,10 @@
 				<div data-i18n="Tables">Kelola Set Kelas <b style="color: red;">(On Progres Bang)</b></div>
 			</a>
 		</li>
-		<li class="menu-item <?= ($active == 'set tahun ajar') ? 'active' : '' ?>">
-			<a href="<?= base_url('admin/kelola_set_tahun') ?>" class="menu-link">
+		<li class="menu-item <?= ($active == 'kd') ? 'active' : '' ?>">
+			<a href="<?= base_url('admin/kelola_kd') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set KD (Belum)</div>
+				<div data-i18n="Tables">Kelola Set KD</div>
 			</a>
 		</li>
 		<li class="menu-item <?= ($active == 'raport') ? 'active' : '' ?>">
