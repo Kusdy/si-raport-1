@@ -117,6 +117,11 @@ $routes->group('siswa', ['filter' => 'auth'], function ($routes) {
 // WALI KELAS AKSES
 $routes->group('wakel', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Wakel\DashboardController::index');
+
+    //input-nilai
+    $routes->get('nilai', 'Wakel\InputNilaiController::index');
+    $routes->get('tambah_nilai', 'Wakel\InputNilaiController::tambah');
+    $routes->get('edit_nilai', 'Wakel\InputNilaiController::edit');
 });
 
 // KEPALA SEKOLAH AKSES
