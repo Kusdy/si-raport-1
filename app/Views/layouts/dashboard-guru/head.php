@@ -12,7 +12,7 @@ content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=
 <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="<?= base_url() ?>template/assets/img/favicon/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="<?= base_url() ?>template/assets/img/school.png" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,6 +23,8 @@ rel="stylesheet"
 />
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
 
 <!-- Icons. Uncomment required icon fonts -->
 <link rel="stylesheet" href="<?= base_url() ?>template/assets/vendors/fonts/boxicons.css" />

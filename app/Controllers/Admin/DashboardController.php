@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use App\Models\KelasModel;
 use App\Models\SemesterModel;
 use App\Models\TahunModel;
+use App\Models\KdModel;
 
 class DashboardController extends BaseController
 {
@@ -24,6 +25,9 @@ class DashboardController extends BaseController
         $tahunModel = new TahunModel();
         $tahun = $tahunModel->findAll();
 
+        $kdModel = new KdModel();
+        $kd = $kdModel->findAll();
+
         if ($this->request->getMethod() === 'post') {
             return $this->search();
         }
@@ -35,6 +39,7 @@ class DashboardController extends BaseController
             'tahun' => $tahun,
             'semester' => $semester,
             'kelas' => $kelas,
+            'kd' => $kd,
         ];
         return view('pages/admin/index', $data);
     }
