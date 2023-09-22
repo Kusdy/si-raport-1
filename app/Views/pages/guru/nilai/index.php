@@ -13,16 +13,18 @@
                         <div class="row gx-3 gy-2 align-items-center">
                             <div class="col-md-3">
                                 <label class="form-label" for="kelasSelect">Pilih Kelas</label>
-                                <select class="form-select placement-dropdown" name="kelas" id="kelasSelect" required>
+                                <select class="form-select placement-dropdown select2" name="kelas" id="kelasSelect" required>
                                     <option value="Semua Kelas">Semua Kelas</option>
                                     <?php foreach ($kelasOption as $kelasItem) : ?>
-                                        <option value="<?= $kelasItem['kelas']; ?>" <?= ($selectedKelas === $kelasItem['kelas']) ? 'selected' : ''; ?>><?= $kelasItem['kelas']; ?> - <?= $kelasItem['tingkat']; ?></option>
+                                        <option value="<?= $kelasItem['kelas']; ?>" <?= ($selectedKelas === $kelasItem['kelas']) ? 'selected' : ''; ?>><?= $kelasItem['tingkat']; ?> <?= $kelasItem['kelas']; ?> - <?= $kelasItem['jurusan']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="showToastPlacement">&nbsp;</label>
-                                <button type="submit" class="btn btn-primary d-block">Submit</button>
+                                <button type="submit" class="btn btn-primary d-block position-relative" style="height: 30px; width: 30px;">
+                                    <i class="fas fa-search position-absolute top-50 start-50 translate-middle" style="transform: translate(-50%, -50%);"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -66,7 +68,7 @@
                                         </div>
                                     </td>
                                     <td></td>
-                                    <td> <input type="text" name="nilai"></td>
+                                    <td> <input class="form-control" type="text" name="nilai" ></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -10,7 +10,7 @@ class LoginController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Login Admin'
+            'title' => 'Sign In'
         ];
         return view('auth/login-admin', $data);
     }
@@ -54,7 +54,10 @@ class LoginController extends BaseController
 
         $session = \Config\Services::session();
         $session->setFlashdata('error', 'Email atau Password Anda Salah');
-        return view('auth/login-admin');
+        $data = [
+            'title' => 'Sign In'
+        ];
+        return view('auth/login-admin', $data);
     }
 
     public function logout()

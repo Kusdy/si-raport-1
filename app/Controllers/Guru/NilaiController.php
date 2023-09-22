@@ -13,18 +13,18 @@ class NilaiController extends BaseController
         $kelasModel = new KelasModel();
         $siswaModel = new SiswaModel();
         $kelasOption = $kelasModel->findAll();
-        $siswa = $siswaModel->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
-            ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
-            ->findAll();
+        $siswa = $siswaModel
+        ->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
+        ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
+        ->findAll();
 
-        // Inisialisasi $selectedKelas dengan nilai default
         $selectedKelas = 'Semua Kelas';
 
         $data = [
             'title' => 'Data nilai',
             'kelasOption' => $kelasOption,
             'siswa' => $siswa,
-            'selectedKelas' => $selectedKelas, // Tambahkan ini
+            'selectedKelas' => $selectedKelas, 
         ];
 
         $data['active'] = 'Nilai';
@@ -34,10 +34,8 @@ class NilaiController extends BaseController
 
     public function search()
     {
-        // Ambil data kelas yang dipilih dari form
         $selectedKelas = $this->request->getPost('kelas');
 
-        // Query untuk mengambil data kelas sesuai dengan yang dipilih
         $kelasModel = new KelasModel();
         $siswaModel = new SiswaModel();
         $kelasOption = $kelasModel->findAll();
@@ -46,14 +44,14 @@ class NilaiController extends BaseController
         if ($selectedKelas === 'Semua Kelas') {
             // Jika "Semua Kelas" dipilih, ambil semua data siswa
             $siswa = $siswaModel->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
-                ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
-                ->findAll();
+            ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
+            ->findAll();
         } else {
             // Jika kelas tertentu dipilih, ambil hanya data siswa dari kelas tersebut
             $siswa = $siswaModel->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan')
-                ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
-                ->where('tb_kelas.kelas', $selectedKelas)
-                ->findAll();
+            ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
+            ->where('tb_kelas.kelas', $selectedKelas)
+            ->findAll();
         }
 
         // Data yang akan dikirimkan ke halaman tampilan

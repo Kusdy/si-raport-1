@@ -12,7 +12,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="<?= base_url() ?>template/assets/img/favicon/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="<?= base_url() ?>template/assets/img/school.png" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
