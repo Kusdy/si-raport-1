@@ -19,3 +19,12 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#kelasSelect').select2();
+	});
+</script>
+
