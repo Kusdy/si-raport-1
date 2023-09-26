@@ -20,37 +20,6 @@
                     <form action="<?= base_url('admin/kelola_guru/add') ?>" method="post" enctype="multipart/form-data">
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Kelas</label>
-                            <div class="col-sm-10">
-                                <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-book-add"></i></span>
-                                    <select class="form-select" name="id_kelas">
-                                        <option selected disabled>Pilih kelas</option>
-                                        <?php foreach ($kelasOption as $item): ?>
-                                        <option value="<?= $item['id_kelas'] ?>">
-                                            <?= $item['tingkat'] ?><?= $item['kelas']?>-<?= $item['jurusan']?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Mata
-                                Pelajaran</label>
-                            <div class="col-sm-10">
-                                <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-list-ol"></i></span>
-                                    <select class="form-select" name="id_mapel">
-                                        <option>Pilih Mata Pelajaran</option>
-                                        <option value="1">Bahasa Indonesia</option>
-                                        <option value="2">Bahasa Inggris</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama
                                 guru</label>
                             <div class="col-sm-10">

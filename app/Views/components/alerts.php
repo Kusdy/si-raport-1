@@ -3,21 +3,35 @@
     <?= session('success') ?>
 </div>
 <script>
-    setTimeout(function() {
-        $('#successAlert').fadeOut('slow');
-    }, 3000);
+setTimeout(function() {
+    $('#successAlert').fadeOut('slow');
+}, 3000);
 </script>
 <?php endif; ?>
 
 <?php if (session()->has('error')): ?>
+<?php $errors = session('error'); ?>
+<?php if (is_array($errors)): ?>
+<?php foreach ($errors as $error): ?>
 <div class="alert alert-danger" role="alert" id="gagalAlert">
-    <?= session('error') ?>
+    <?= $error ?>
 </div>
 <script>
-    setTimeout(function() {
-        $('#gagalAlert').fadeOut('slow');
-    }, 3000);
+setTimeout(function() {
+    $('#gagalAlert').fadeOut('slow');
+}, 3000);
 </script>
+<?php endforeach; ?>
+<?php else: ?>
+<div class="alert alert-danger" role="alert" id="gagalAlert">
+    <?= $errors ?>
+</div>
+<script>
+setTimeout(function() {
+    $('#gagalAlert').fadeOut('slow');
+}, 3000);
+</script>
+<?php endif; ?>
 <?php endif; ?>
 
 <?php if (session()->has('NoEdit')): ?>
@@ -25,9 +39,8 @@
     <?= session('NoEdit') ?>
 </div>
 <script>
-    setTimeout(function() {
-        $('#updateAlert').fadeOut('slow');
-    }, 3000);
+setTimeout(function() {
+    $('#updateAlert').fadeOut('slow');
+}, 3000);
 </script>
 <?php endif; ?>
-

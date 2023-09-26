@@ -58,8 +58,6 @@ class KelGuruController extends BaseController
                 'foto' => $newName,
                 'no_hp' => $this->request->getPost('no_hp'),
                 'email' => $this->request->getPost('email'),
-                'id_kelas' => $this->request->getPost('id_kelas'),
-                'id_mapel' => $this->request->getPost('id_mapel'),
 
             ];
 
@@ -127,8 +125,6 @@ class KelGuruController extends BaseController
         $data['alamat'] = $this->request->getPost('alamat');
         $data['no_hp'] = $this->request->getPost('no_hp');
         $data['email'] = $this->request->getPost('email');
-        $data['id_kelas'] = $this->request->getPost('id_kelas');
-        $data['id_mapel'] = $this->request->getPost('id_mapel');
 
         // Validasi nama guru agar tidak sama dengan data lain
         $existingSchool = $guruModel->where('nama_guru', $data['nama_guru'])->where('id_guru !=', $id)->first();

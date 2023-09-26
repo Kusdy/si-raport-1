@@ -88,6 +88,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     //kelola set kelas
     $routes->get('kelola_set_kelas', 'Admin\KelSetKelasController::index');
+    $routes->get('kelola_set_kelas/new', 'Admin\KelSetKelasController::new'); // Pake page baru
+    $routes->post('kelola_set_kelas/add', 'Admin\KelSetKelasController::add');
+    $routes->get('kelola_set_kelas/edit/(:num)', 'Admin\KelSetKelasController::edit/$1');
+    $routes->post('kelola_set_kelas/update/(:num)', 'Admin\KelSetKelasController::update/$1');
+    $routes->get('kelola_set_kelas/delete/(:num)', 'Admin\KelSetKelasController::delete/$1');
 
     //kelola set mapel
     $routes->get('kelola_set_mapel', 'Admin\KelSetMapelController::index');

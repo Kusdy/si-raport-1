@@ -16,7 +16,7 @@
                     <span class="tf-icons bx bx-plus-circle"></span>&nbsp; Tambah Mapel
                 </a>
             </div>
-            <h5 class="card-header">Data Mata Pelajaran</h5>
+            <h5 class="card-header">Data Mata Pelajaran </h5>
             <div class="table-responsive text-nowrap">
                 <table class="table table-striped">
                     <thead class="table-light">
@@ -132,10 +132,10 @@
                             <select class="form-select" name="id_guru">
                                 <option selected disabled>Pilih Guru</option>
                                 <?php foreach ($guruOption as $guruItem): ?>
-                                    <option value="<?= $guruItem['id_guru'] ?>"
-                                        <?php if($guruItem['id_guru'] == $item['id_guru']) echo 'selected' ?>>
-                                        <?= $guruItem['nama_guru'] ?>
-                                    </option>
+                                <option value="<?= $guruItem['id_guru'] ?>"
+                                    <?php if($guruItem['id_guru'] == $item['id_guru']) echo 'selected' ?>>
+                                    <?= $guruItem['nama_guru'] ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -144,7 +144,7 @@
                         <div class="col mb-0 mt-3">
                             <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
                             <input class="form-control" type="text" id="mata_pelajaran" name="mata_pelajaran"
-                                placeholder="Nama mata pelajaran."value="<?= $item['mata_pelajaran'] ?>" required />
+                                placeholder="Nama mata pelajaran." value="<?= $item['mata_pelajaran'] ?>" required />
                         </div>
                     </div>
                 </div>
