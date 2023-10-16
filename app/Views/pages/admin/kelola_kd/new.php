@@ -27,75 +27,80 @@
 										<select class="form-select" name="id_mapel[]">
 											<option selected disabled>Pilih Mapel</option>
 											<?php foreach ($dataMapel as $item): ?>
-												<option value="<?= $item['id_mapel'] ?>"><?= $item['mata_pelajaran'] ?> - <?= $item['id_kelas'] ?></option>
-											<?php endforeach; ?>
-										</select>
-									</div>
-									<div class="col mb-0 mt-0 col-md-2">
-										<label for="mata_pelajaran" class="form-label">Pilih Indikator</label>
-										<select class="form-select" name="indikator_kd[]">
-											<option selected disabled>Pilih Indikator</option>
-											<option>Indikator 1</option>
-											<option>Indikator 2</option>
-											<option>Indikator 3</option>
-											<option>Indikator 4</option>
-										</select>
-									</div>
-									<div class="col mb-0 mt-0 col-md-3">
-										<label for="mata_pelajaran" class="form-label">Deskripsi</label>
-										<textarea class="form-control" rows="1" name="deskripsi_kd[]"></textarea>
-									</div>
-									<div class="col mb-0 mt-0 col-md-3">
-										<label for="mata_pelajaran" class="form-label">Materi Pembelajaran</label>
-										<textarea class="form-control" rows="1" name="materi_pembelajaran[]"></textarea>
-									</div>
-									<div class="col mb-0 mt-0 col-md-2">
-										<label for="mata_pelajaran" class="form-label">Penilaian</label>
-										<textarea class="form-control" rows="1" name="penilaian[]"></textarea>
+												<option value="<?= $item['id_mapel'] ?>"><?= $item['mata_pelajaran'] ?> - 
+													<?php foreach ($kelas as $kel): ?>
+														<?php if ($kel['id_kelas'] == $item['id_kelas']): ?>
+															<?= $kel['tingkat'] ?> <?= $kel['jurusan'] ?> <?= $kel['kelas'] ?></option>
+														<?php endif; ?>
+													<?php endforeach; ?>
+												<?php endforeach; ?>
+											</select>
+										</div>
+										<div class="col mb-0 mt-0 col-md-2">
+											<label for="mata_pelajaran" class="form-label">Pilih Indikator</label>
+											<select class="form-select" name="indikator_kd[]">
+												<option selected disabled>Pilih Indikator</option>
+												<option>Indikator 1</option>
+												<option>Indikator 2</option>
+												<option>Indikator 3</option>
+												<option>Indikator 4</option>
+											</select>
+										</div>
+										<div class="col mb-0 mt-0 col-md-3">
+											<label for="mata_pelajaran" class="form-label">Deskripsi</label>
+											<textarea class="form-control" rows="1" name="deskripsi_kd[]"></textarea>
+										</div>
+										<div class="col mb-0 mt-0 col-md-3">
+											<label for="mata_pelajaran" class="form-label">Materi Pembelajaran</label>
+											<textarea class="form-control" rows="1" name="materi_pembelajaran[]"></textarea>
+										</div>
+										<div class="col mb-0 mt-0 col-md-2">
+											<label for="mata_pelajaran" class="form-label">Penilaian</label>
+											<textarea class="form-control" rows="1" name="penilaian[]"></textarea>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="mt-4">
-							<button type="submit" class="btn btn-primary me-2">Simpan</button>
-							<button type="reset" class="btn btn-danger me-2">Reset</button>
-							<a type="button" href="<?= base_url('admin/kelola_kd') ?>" class="btn btn-warning">Back</a>
-						</div>
-					</form>
+							<div class="mt-4">
+								<button type="submit" class="btn btn-primary me-2">Simpan</button>
+								<button type="reset" class="btn btn-danger me-2">Reset</button>
+								<a type="button" href="<?= base_url('admin/kelola_kd') ?>" class="btn btn-warning">Back</a>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-		const addButton = document.getElementById("add-kd-button");
-		const kdFormTemplate = document.getElementById("kd-form-template");
-		const formContainer = document.getElementById("form-container");
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const addButton = document.getElementById("add-kd-button");
+			const kdFormTemplate = document.getElementById("kd-form-template");
+			const formContainer = document.getElementById("form-container");
 
-		let formCount = 1;
+			let formCount = 1;
 
-		addButton.addEventListener("click", function (e) {
-			e.preventDefault();
+			addButton.addEventListener("click", function (e) {
+				e.preventDefault();
 
-			const newForm = kdFormTemplate.cloneNode(true);
-			newForm.style.display = "block";
+				const newForm = kdFormTemplate.cloneNode(true);
+				newForm.style.display = "block";
 
-			newForm.querySelectorAll("textarea").forEach((textarea) => {
-				textarea.value = "";
+				newForm.querySelectorAll("textarea").forEach((textarea) => {
+					textarea.value = "";
+				});
+
+				newForm.querySelectorAll("input, select").forEach((input) => {
+					input.name += "_" + formCount;
+				});
+
+				formContainer.appendChild(newForm);
+
+				formCount++;
 			});
-
-			newForm.querySelectorAll("input, select").forEach((input) => {
-				input.name += "_" + formCount;
-			});
-
-			formContainer.appendChild(newForm);
-
-			formCount++;
 		});
-	});
 
-</script>
+	</script>
 
-<?= $this->endSection(); ?>
+	<?= $this->endSection(); ?>

@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\KdModel;
 use App\Models\MapelModel;
+use App\Models\KelasModel;
 
 class SetKdController extends BaseController
 {
@@ -41,10 +42,14 @@ class SetKdController extends BaseController
         $mapel = new MapelModel();
         $dataMapel = $mapel->findAll();
 
+        $kelasModel = new KelasModel();
+        $kelas = $kelasModel->findAll();
+
         $data = [
             'active' => 'kd',
             'title' => 'Tambah KD',
             'dataMapel' => $dataMapel,
+            'kelas' => $kelas,
         ];
 
         return view('pages/admin/kelola_kd/new', $data);

@@ -15,11 +15,6 @@ class CreateTabelMapel extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'id_kd' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'unsigned' => true,
-            ],
             'id_guru' => [
                 'type' => 'INT',
                 'constraint' => 5,

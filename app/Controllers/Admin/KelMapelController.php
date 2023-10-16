@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\GuruModel;
 use App\Models\MapelModel;
+use App\Models\KelasModel;
 
 class KelMapelController extends BaseController
 {
@@ -16,9 +17,12 @@ class KelMapelController extends BaseController
         $guruModel = new GuruModel();
         $guruOption = $guruModel->findAll();
 
+        $kelasModel = new KelasModel();
+        $kelas = $kelasModel->findAll();
+
         $mapelWithGuru = $mapelModel->select('tb_mapel.*, tb_guru.nama_guru')
-            ->join('tb_guru', 'tb_mapel.id_guru = tb_guru.id_guru')
-            ->findAll();
+        ->join('tb_guru', 'tb_mapel.id_guru = tb_guru.id_guru')
+        ->findAll();
 
         if ($this->request->getMethod() === 'post') {
             return redirect()->to('admin/search');
@@ -29,6 +33,7 @@ class KelMapelController extends BaseController
             'active'         => 'kelola_mapel',
             'mapel'          => $mapelWithGuru,
             'guruOption'     => $guruOption,
+            'kelas'          => $kelas,
         ];
 
         return view('pages/admin/kelola_mapel/index', $data);
@@ -43,12 +48,14 @@ class KelMapelController extends BaseController
         $validation->setRules([
             'mata_pelajaran' => 'required',
             'id_guru' => 'required',
+            'id_kelas' => 'required',
         ]);
 
         if ($validation->withRequest($this->request)->run()) {
             $data = [
                 'mata_pelajaran' => $this->request->getPost('mata_pelajaran'),
                 'id_guru' => $this->request->getPost('id_guru'),
+                'id_kelas' => $this->request->getPost('id_kelas'),
             ];
 
             // Lakukan pengecekan apakah operasi insert berhasil

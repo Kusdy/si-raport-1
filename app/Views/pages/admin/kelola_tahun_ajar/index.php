@@ -29,7 +29,7 @@
 						<?php foreach ($tahun as $item) : ?>
 							<tr>
 								<td><?= $counter++ ?></td>
-								<td class="table-plus text-center"><?= $item['semester'] . ' - ' . $item['ket_semester'] ?></td>
+								<td class="table-plus text-center">Semester <?= $item['semester'] . ' - ' . $item['ket_semester'] ?></td>
 								<td align="center"><span class="badge bg-label-primary me-1"><b><?= $item['tahun']; ?></b></span></td>
 								<td>
 									<div class="dropdown">
