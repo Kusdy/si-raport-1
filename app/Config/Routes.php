@@ -88,6 +88,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('kelola_raport/add', 'Admin\KelRaportController::add');
     $routes->get('kelola_raport/edit/(:num)', 'Admin\KelRaportController::edit/$1');
     $routes->post('kelola_raport/update/(:num)', 'Admin\KelRaportController::update/$1');
+    $routes->get('kelola_raport/delete/(:num)', 'Admin\KelRaportController::delete/$1');
     $routes->get('kelola_raport/cetak-pdf', 'Admin\KelRaportController::pdf');
 
     //kelola set kelas

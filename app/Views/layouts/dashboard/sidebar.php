@@ -2,8 +2,8 @@
 	<div class="app-brand demo">
 		<a href="index.html" class="app-brand-link">
 			<span class="app-brand-logo demo">
-                    <img src="<?= base_url() ?>template/assets/img/school.png" alt="" style="width: 30px;">
-                  </span>
+				<img src="<?= base_url() ?>template/assets/img/school.png" alt="" style="width: 30px;">
+			</span>
 			<span class="demo menu-text fw-bolder ms-2" style="font-size: 25px;">SI Raport</span>
 		</a>
 
@@ -89,13 +89,6 @@
 		<!-- Forms & Tables -->
 		<li class="menu-header small text-uppercase"><span class="menu-header-text">Set Data</span></li>
 		<!-- Forms -->
-		<!-- Tables -->
-		<li class="menu-item <?= ($active == 'set mapel') ? 'active' : '' ?>">
-			<a href="<?= base_url('admin/kelola_set_mapel') ?>" class="menu-link">
-				<i class="menu-icon tf-icons bx bx-table"></i>
-				<div data-i18n="Tables">Kelola Set Kelas <b style="color: red;">(On Progres Bang)</b></div>
-			</a>
-		</li>
 		<li class="menu-item <?= ($active == 'kd') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_kd') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-table"></i>
@@ -105,7 +98,7 @@
 		<li class="menu-item <?= ($active == 'raport') ? 'active' : '' ?>">
 			<a href="<?= base_url('admin/kelola_raport') ?>" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-collection"></i>
-				<div data-i18n="Basic">Kelola Set Raport (Belum)</div>
+				<div data-i18n="Basic">Kelola Set Raport</div>
 			</a>
 		</li>
 		<li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>

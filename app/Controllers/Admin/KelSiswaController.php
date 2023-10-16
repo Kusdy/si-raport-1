@@ -13,16 +13,21 @@ class KelSiswaController extends BaseController
     public function index()
     {   
         $modelSiswa = new SiswaModel(); 
-        $dataSiswa = $modelSiswa
-        ->select('tb_siswa.*, tb_kelas.tingkat, tb_kelas.kelas, tb_kelas.jurusan, tb_tahun_ajar.tahun')
-        ->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas')
-        ->join('tb_tahun_ajar', 'tb_siswa.id_tahun_ajar = tb_tahun_ajar.id_thn_ajar')
-        ->findAll();
+        $siswa = $modelSiswa->findAll();
+
+        $tahunModel = new TahunModel(); 
+        $tahun = $tahunModel->findAll();
+
+        $kelasModel = new KelasModel(); 
+        $kelas = $kelasModel->findAll();
+
 
         $data = [
             'title' => 'Data Siswa',
             'active' => 'siswa',
-            'dataSiswa' => $dataSiswa,
+            'siswa' => $siswa,
+            'kelas' => $kelas,
+            'tahun' => $tahun,
         ];
         return view('pages/admin/kelola_siswa/index', $data);
     }

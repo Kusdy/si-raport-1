@@ -26,7 +26,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-striped">
                     <thead class="table-light">
-                        <tr>
+                        <tr class="text-center">
                             <th>No</th>
                             <th>Foto</th>
                             <th>Nama</th>
@@ -39,24 +39,37 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                         <?php $i = 1; ?>
-                        <?php foreach ($dataSiswa as $item) : ?>
-                            <tr>
+                        <?php foreach ($siswa as $item) : ?>
+                            <tr class="text-center">
                                 <td><?= $i++ ?></td>
                                 <td>
-                                    <img src="<?= base_url('uploads/siswa/' . $item['foto']) ?>" alt="<?= $item['nama_siswa'] ?>" style="width: 50px; height: 50px;">
+                                    <img src="<?= base_url('uploads/siswa/' . $item['foto']) ?>" alt="<?= $item['nama_siswa'] ?>" class="d-block rounded" style="width: 50px; height: 50px;">
                                 </td>
                                 <td><?= $item['nama_siswa'] ?></td>
                                 <td><?= $item['nis'] ?></td>
                                 <td><?= date('d/m/Y', strtotime($item['tgl_lahir'])) ?></td>
-                                <td><?= $item['tingkat'] ?><?= $item['kelas'] ?>-<?= $item['jurusan'] ?></td>
-                                <td><span class="badge bg-label-primary me-1"><b><?= $item['tahun']; ?></b></span></td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<?= base_url('admin/kelola_siswa/edit/' . $item['id_siswa']) ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmation-modal-<?= $item['id_siswa'] ?>">
-                                                <i class="bx bx-trash me-2"></i> Delete</a>
+                                    <?php foreach ($kelas as $kel) : ?>
+                                        <?php if ($kel['id_kelas'] == $item['id_kelas']) : ?>
+                                            <?= $kel['tingkat'] ?><?= $kel['kelas'] ?>-<?= $kel['jurusan'] ?>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </td>
+                                <td><span class="badge bg-label-primary me-1">
+                                    <?php foreach ($tahun as $tah) : ?>
+                                        <?php if ($tah['id_thn_ajar'] == $item['id_tahun_ajar']) : ?>
+                                            <b><?= $tah['tahun']; ?></b>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?= base_url('admin/kelola_siswa/edit/' . $item['id_siswa']) ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmation-modal-<?= $item['id_siswa'] ?>">
+                                            <i class="bx bx-trash me-2"></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -71,7 +84,7 @@
 </div>
 
 <!-- Modal -->
-<?php foreach ($dataSiswa as $key => $item) : ?>
+<?php foreach ($siswa as $key => $item) : ?>
     <div class="modal fade" id="confirmation-modal-<?= $item['id_siswa'] ?>" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

@@ -8,7 +8,7 @@
         <h4 class="fw-bold mb-4">
             <span class="text-muted fw-light">Home /</span> <?= $title; ?>
         </h4>
-
+        <?= $this->include('components/alerts'); ?>
         <div class="card mb-4">
             <div class="card-body">
                 <div class="row gx-3 gy-2 align-items-center">
@@ -98,36 +98,58 @@
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="<?= base_url('admin/kelola_raport/edit') ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#hapus-<?= $item['id_raport'] ?>">
+                                                <i class="bx bx-trash me-2"></i> Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="demo-inline-spacing">
+                <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
+                    <ul class="pagination">
+                        <!-- JS -->
+                    </ul>
+                    <select class="form-select" id="items-per-page" style="width: 73px;">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="75">75</option>
+                        <option value="100">100</option>
+                    </select>
+                </nav>
             </div>
         </div>
-        <div class="demo-inline-spacing">
-            <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
-                <ul class="pagination">
-                    <!-- JS -->
-                </ul>
-                <select class="form-select" id="items-per-page" style="width: 100px;">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="75">75</option>
-                    <option value="100">100</option>
-                </select>
-            </nav>
-        </div>
     </div>
+
+    <?php foreach ($raport as $key => $item) : ?>
+        <div class="modal fade" id="hapus-<?= $item['id_raport'] ?>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel1">Konfirmasi Penghapusan Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="<?= base_url('admin/kelola_raport/delete/' . $item['id_raport']) ?>">
+                  <div class="modal-body">
+                    <p>Yakin ingin menghapus data ini? klik hapus jika Ya!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
+                  <button type="submit" class="btn btn-primary">Hapus</button>
+              </div>
+          </form>
+      </div>
+  </div>
 </div>
+<?php endforeach; ?>
 
 <script>
-    // Tangani perubahan dropdown
     document.getElementById('kelasSelect').addEventListener('change', function() {
         // Dapatkan nilai yang dipilih
         var selectedValue = this.value;
@@ -157,7 +179,5 @@
         }
     });
 </script>
-
-
 
 <?= $this->endSection(); ?>
