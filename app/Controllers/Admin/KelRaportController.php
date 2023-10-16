@@ -38,8 +38,50 @@ class KelRaportController extends BaseController
         $semesterModel = new SemesterModel();
         $semester = $semesterModel->findAll();
 
+        $selectedKelas = 'Semua Kelas';
+
         $data = [
             'title' => 'Kelola Raport',
+            'active' => 'raport',
+            'raport' => $raport,
+            'kelas' => $kelas,
+            'guru' => $guru,
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+            'tahun' => $tahun,
+            'semester' => $semester,
+            'selectedKelas' => $selectedKelas,
+
+        ];
+
+        return view('pages/admin/kelola_raport/index', $data);
+    }
+
+    public function new()
+    {
+        $raportModel = new RaportModel();
+        $raport = $raportModel->findAll();
+
+        $kelasModel = new KelasModel();
+        $kelas = $kelasModel->findAll();
+
+        $guruModel = new GuruModel();
+        $guru = $guruModel->findAll();
+
+        $siswaModel = new SiswaModel();
+        $siswa = $siswaModel->findAll();
+
+        $mapelModel = new MapelModel();
+        $mapel = $mapelModel->findAll();
+
+        $tahunModel = new TahunModel();
+        $tahun = $tahunModel->findAll();
+
+        $semesterModel = new SemesterModel();
+        $semester = $semesterModel->findAll();
+
+        $data = [
+            'title' => 'Tambah Nilai Siswa',
             'active' => 'raport',
             'raport' => $raport,
             'kelas' => $kelas,
@@ -51,8 +93,67 @@ class KelRaportController extends BaseController
 
         ];
 
-        return view('pages/admin/kelola_raport/index', $data);
+        return view('pages/admin/kelola_raport/new', $data);
     }
+
+    public function add()
+    {
+        $model = new RaportModel();
+
+        $validationRules = [
+            'id_siswa.*' => 'required',
+            'id_mapel.*' => 'required',
+            'id_kelas.*' => 'required',
+            'id_thn_ajar.*' => 'required',
+            'nilai_uts.*' => 'required',
+            'nilai_uas.*' => 'required',
+        ];
+
+        if (!$this->validate($validationRules)) {
+            $errorMessages = implode('<br>', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('error', $errorMessages);
+        }
+
+        $formData = $this->request->getPost();
+
+        // Melintasi data formulir dan menyimpan setiap set data secara terpisah.
+        foreach ($formData['id_siswa'] as $formCount => $id_siswa) {
+
+            $id_guru = $this->findGuruIdByMapelId($formData['id_mapel'][$formCount]);
+            $rata_rata = ($formData['nilai_uts'][$formCount] + $formData['nilai_uas'][$formCount]) / 2;
+
+            $data = [
+                'id_siswa' => $id_siswa,
+                'id_guru' => $id_guru,
+                'id_mapel' => $formData['id_mapel'][$formCount],
+                'id_kelas' => $formData['id_kelas'][$formCount],
+                'id_thn_ajar' => $formData['id_thn_ajar'][$formCount],
+                'nilai_uts' => $formData['nilai_uts'][$formCount],
+                'nilai_uas' => $formData['nilai_uas'][$formCount],
+                'rata_rata' => $rata_rata,
+            ];
+
+            $model->insert($data);
+        }
+
+        return redirect()->to('admin/kelola_raport/new')->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function findGuruIdByMapelId($id_mapel)
+    {
+    // Gantilah 'MapelModel' dan 'id_guru' sesuai dengan model dan kolom yang sesuai di aplikasi Anda.
+        $mapel = new MapelModel();
+        $guruId = $mapel->where('id_mapel', $id_mapel)->first();
+
+        if ($guruId) {
+            return $guruId['id_guru'];
+        }
+
+        return null; 
+    }
+
+
+
 
     public function edit()
     {

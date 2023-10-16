@@ -5,9 +5,25 @@
 
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">
+        <h4 class="fw-bold mb-4">
             <span class="text-muted fw-light">Home /</span> <?= $title; ?>
         </h4>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row gx-3 gy-2 align-items-center">
+                    <div class="col-md-3">
+                        <label class="form-label" for="kelasSelect">Pilih Kelas</label>
+                        <select class="form-select placement-dropdown select2" name="kelas" id="kelasSelect" required>
+                            <option value="Semua Kelas">Semua Kelas</option>
+                            <?php foreach ($kelas as $kelasItem) : ?>
+                                <option value="<?= $kelasItem['kelas']; ?>" <?= ($selectedKelas === $kelasItem['kelas']) ? 'selected' : ''; ?>><?= $kelasItem['tingkat']; ?> <?= $kelasItem['kelas']; ?> - <?= $kelasItem['jurusan']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
@@ -17,17 +33,13 @@
                 </div>
                 <div class="col-md-4 text-end">
                     <div class="btn-group mt-3" style="margin-right: 20px;">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cetak
+                        <button type="button" class="btn btn-primary dropdown-toggle mr-3" data-bs-toggle="dropdown" aria-expanded="false">
+                            Aksi
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('admin/kelola_raport/cetak-pdf') ?>">PDF</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('admin/kelola_raport/new') ?>">Tambah Nilai</a></li>
+                            <hr class="dropdown-divider" />
+                            <li><a class="dropdown-item" href="<?= base_url('admin/kelola_raport/cetak-pdf') ?>">Cetak PDF</a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,9 +60,9 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <?php $i = 1; ?>
-                    <?php foreach ($raport as $item): ?>
-                        <tbody class="table-border-bottom-0">
+                    <tbody class="table-border-bottom-0" id="kelasTerpilih">
+                        <?php $i = 1; ?>
+                        <?php foreach ($raport as $item): ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <?php foreach ($siswa as $sis): ?>
@@ -96,6 +108,56 @@
                 </table>
             </div>
         </div>
+        <div class="demo-inline-spacing">
+            <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
+                <ul class="pagination">
+                    <!-- JS -->
+                </ul>
+                <select class="form-select" id="items-per-page" style="width: 100px;">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
+                </select>
+            </nav>
+        </div>
     </div>
+</div>
 
-    <?= $this->endSection(); ?>
+<script>
+    // Tangani perubahan dropdown
+    document.getElementById('kelasSelect').addEventListener('change', function() {
+        // Dapatkan nilai yang dipilih
+        var selectedValue = this.value;
+
+        // Dapatkan semua baris tabel
+        var tableRows = document.querySelectorAll("tbody#kelasTerpilih tr");
+
+        // Sembunyikan semua baris tabel
+        for (var i = 0; i < tableRows.length; i++) {
+            tableRows[i].style.display = "none";
+        }
+
+        // Tampilkan hanya baris yang sesuai dengan kelas yang dipilih
+        if (selectedValue === "Semua Kelas") {
+            // Jika "Semua Kelas" dipilih, tampilkan semua baris
+            for (var i = 0; i < tableRows.length; i++) {
+                tableRows[i].style.display = "";
+            }
+        } else {
+            // Jika kelas tertentu dipilih, tampilkan hanya baris yang cocok
+            for (var i = 0; i < tableRows.length; i++) {
+                var kelasColumn = tableRows[i].querySelector("td:nth-child(5)");
+                if (kelasColumn.textContent.includes(selectedValue)) {
+                    tableRows[i].style.display = "";
+                }
+            }
+        }
+    });
+</script>
+
+
+
+<?= $this->endSection(); ?>

@@ -19,9 +19,8 @@ class RaportModel extends Model
         'rata_rata',
     ];
 
-    public function getLaporanData()
-    {
-        // Mengambil data laporan dari tabel 'tb_raport'
-        return $this->findAll();
-    }
+    // public function getLaporanData()
+    // {
+    //     return $this->findAll();
+    // }
 }
