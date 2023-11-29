@@ -34,7 +34,7 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <?php $counter = 1; ?>
-                                <?php foreach ($siswa as $item) : ?>
+                                <?php foreach ($raport as $item) : ?>
                                 <tr>
                                     <td><?= $counter++ ?></td>
                                     <td><?= $item['nama_siswa'] ?></td>
@@ -74,7 +74,7 @@
 
 <!-- Modal -->
 
-<?php foreach($siswa as $item): ?>
+<?php foreach($raport as $item): ?>
 <!-- Modal Edit -->
 <div class="modal fade" id="edit-<?= $item['id_raport']; ?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
