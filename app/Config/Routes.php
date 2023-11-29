@@ -110,8 +110,15 @@ $routes->group('guru', ['filter' => 'auth'], function ($routes) {
 
     //nilai
     $routes->get('nilai', 'Guru\NilaiController::index');
+    $routes->get('test', 'Guru\NilaiController::test');
+    $routes->get('nilai/new', 'Guru\NilaiController::new');
+    $routes->get('search', 'Guru\NilaiController::index');
     $routes->post('search', 'Guru\NilaiController::search');
     $routes->post('pagination', 'Guru\NilaiController::index');
+    $routes->post('nilai/add', 'Guru\NilaiController::add');
+    $routes->post('nilai/update/(:num)', 'Guru\NilaiController::update/$1');
+    $routes->post('nilai/delete/(:num)', 'Guru\NilaiController::delete/$1');
+
 });
 
 // SISWA AKSES
@@ -125,8 +132,16 @@ $routes->group('wakel', ['filter' => 'auth'], function ($routes) {
 
     //input-nilai
     $routes->get('nilai', 'Wakel\InputNilaiController::index');
-    $routes->get('tambah_nilai', 'Wakel\InputNilaiController::tambah');
-    $routes->get('edit_nilai', 'Wakel\InputNilaiController::edit');
+    $routes->get('search', 'Wakel\InputNilaiController::index');
+    $routes->post('search', 'Wakel\InputNilaiController::search');
+    $routes->post('nilai/add', 'Wakel\InputNilaiController::add');
+    $routes->post('nilai/update/(:num)', 'Wakel\InputNilaiController::update/$1');
+    $routes->post('nilai/delete/(:num)', 'Wakel\InputNilaiController::delete/$1');
+    
+    //Raport
+    $routes->get('raport', 'Wakel\RaportController::index');
+    $routes->post('raport/update/(:num)', 'Wakel\RaportController::update/$1');
+    $routes->post('raport/delete/(:num)', 'Wakel\RaportController::delete/$1');
 });
 
 // KEPALA SEKOLAH AKSES

@@ -1,11 +1,11 @@
-<?= $this->extend('layouts/dashboard-guru/main'); ?>
+<?= $this->extend('layouts/dashboard-wakel/main'); ?>
 <?= $this->section('content'); ?>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
 
         <h4 class="fw-bold py-3 mb-2">
-            <span class="text-muted fw-light">Dashboard /</span> Nilai
+            <span class="text-muted fw-light">Dashboard /</span> Raport
         </h4>
         <div class="col-md-12">
             <?= $this->include('components/alerts'); ?>
@@ -13,8 +13,8 @@
                 <div class="card-header">
                     <div class="add-button-container">
                         <h5>Data Nilai</h5>
-                        <a href="<?= base_url('guru/nilai/new'); ?>" class="btn btn-primary add-button">
-                            <span class="tf-icons bx bx-plus-circle"></span>&nbsp;Tambah Nilai
+                        <a href="<?= base_url('wakel/nilai/new'); ?>" class="btn btn-primary add-button">
+                            <span class="tf-icons bx bxs-printer"></span>&nbsp;Cetak
                         </a>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <?php $counter = 1; ?>
-                                <?php foreach ($siswa as $item) : ?>
+                                <?php foreach ($raport as $item) : ?>
                                 <tr>
                                     <td><?= $counter++ ?></td>
                                     <td><?= $item['nama_siswa'] ?></td>
@@ -55,7 +55,7 @@
                                                 </a>
                                                 <a type="button" class="dropdown-item" data-bs-toggle="modal"
                                                     data-bs-target="#hapus-<?= isset($item['id_raport']) ? $item['id_raport'] : ''; ?>"
-                                                    data-delete-url="<?= base_url('guru/nilai/delete/') ?>">
+                                                    data-delete-url="<?= base_url('wakel/raport/delete/') ?>">
                                                     <i class="bx bx-trash me-2"></i> Delete
                                                 </a>
                                             </div>
@@ -74,7 +74,7 @@
 
 <!-- Modal -->
 
-<?php foreach($siswa as $item): ?>
+<?php foreach($raport as $item): ?>
 <!-- Modal Edit -->
 <div class="modal fade" id="edit-<?= $item['id_raport']; ?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -83,7 +83,7 @@
                 <h5 class="modal-title" id="exampleModalLabel4">Edit Nilai</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('guru/nilai/update/' . $item['id_raport']); ?>" method="post">
+            <form action="<?= base_url('wakel/raport/update/' . $item['id_raport']); ?>" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="id_siswa[]" value="<?= $item['id_siswa']; ?>">
                     <div class="row mb-3">
@@ -157,7 +157,7 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Konfirmasi Penghapusan Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('guru/nilai/delete/' . $item['id_raport']) ?>" method="post">
+            <form action="<?= base_url('wakel/raport/delete/' . $item['id_raport']) ?>" method="post">
                 <div class="modal-body">
                     <p>Yakin ingin menghapus data Nilai <b><?= $item['nama_siswa']; ?> Kelas
                             <?= $item['tingkat']; ?><?= $item['kelas']; ?>(<?= $item['jurusan']; ?>)</b>? klik hapus
@@ -174,5 +174,5 @@
 <!-- End Modal Delete -->
 
 <?php endforeach ?>
-<!-- End Modal -->
+
 <?= $this->endSection(); ?>
