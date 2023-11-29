@@ -153,9 +153,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $i = 1; ?>
                     <?php foreach ($laporan as $item): ?>
                     <tr>
-                        <td class="td-bawah"><?= $item['id_raport'] ?></td>
+                        <td class="td-bawah"><?= $i++ ?></td>
                         <td class="td-bawah"><?= $item['nama_siswa'] ?></td>
                         <td class="td-bawah"><?= $item['nama_guru'] ?></td>
                         <td class="td-bawah"><?= $item['tingkat'] ?> <?= $item['jurusan'] ?> <?= $item['kelas'] ?></td>
