@@ -62,8 +62,6 @@ class KelRaportController extends BaseController
         $semesterModel = new SemesterModel();
         $semester = $semesterModel->findAll();
 
-        $selectedKelas = 'Semua Kelas';
-
         $data = [
             'title' => 'Kelola Raport',
             'active' => 'raport',
@@ -74,7 +72,6 @@ class KelRaportController extends BaseController
             'mapel' => $mapel,
             'tahun' => $tahun,
             'semester' => $semester,
-            'selectedKelas' => $selectedKelas,
 
         ];
 
@@ -171,11 +168,40 @@ class KelRaportController extends BaseController
         return redirect()->to('admin/kelola_raport/new')->with('success', 'Data berhasil ditambahkan.');
     }
 
-    public function edit()
+    public function view($id_siswa)
     {
+        $raportModel = new RaportModel();
+        $raport = $raportModel->where('id_siswa', $id_siswa)->findAll();
+
+        $kelasModel = new KelasModel();
+        $kelas = $kelasModel->findAll();
+
+        $guruModel = new GuruModel();
+        $guru = $guruModel->findAll();
+
+        $siswaModel = new SiswaModel();
+        $siswa = $siswaModel->find($id_siswa);
+
+        $mapelModel = new MapelModel();
+        $mapel = $mapelModel->findAll();
+
+        $tahunModel = new TahunModel();
+        $tahun = $tahunModel->findAll();
+
+        $semesterModel = new SemesterModel();
+        $semester = $semesterModel->findAll();
+
         $data = [
-            'title' => 'Kelola Raport',
+            'title' => 'Tambah Nilai Siswa',
             'active' => 'raport',
+            'raport' => $raport,
+            'kelas' => $kelas,
+            'guru' => $guru,
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+            'tahun' => $tahun,
+            'semester' => $semester,
+            'raportSiswa' => $id_siswa,
 
         ];
         return view('pages/admin/kelola_raport/edit', $data);

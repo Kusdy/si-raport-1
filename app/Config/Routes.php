@@ -86,7 +86,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('kelola_raport', 'Admin\KelRaportController::index');
     $routes->get('kelola_raport/new', 'Admin\KelRaportController::new');
     $routes->post('kelola_raport/add', 'Admin\KelRaportController::add');
-    $routes->get('kelola_raport/edit/(:num)', 'Admin\KelRaportController::edit/$1');
+    $routes->get('kelola_raport/view/(:num)', 'Admin\KelRaportController::view/$1');
     $routes->post('kelola_raport/update/(:num)', 'Admin\KelRaportController::update/$1');
     $routes->get('kelola_raport/delete/(:num)', 'Admin\KelRaportController::delete/$1');
     $routes->get('kelola_raport/cetak-pdf', 'Admin\KelRaportController::pdf');

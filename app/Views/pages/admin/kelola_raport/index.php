@@ -14,10 +14,10 @@
                 <div class="row gx-3 gy-2 align-items-center">
                     <div class="col-md-3">
                         <label class="form-label" for="kelasSelect">Pilih Kelas</label>
-                        <select class="form-select placement-dropdown select2" name="kelas" id="kelasSelect" required>
+                        <select class="form-select placement-dropdown" name="kelas" id="filter" onchange="filterTable()">
                             <option value="Semua Kelas">Semua Kelas</option>
                             <?php foreach ($kelas as $kelasItem) : ?>
-                                <option value="<?= $kelasItem['kelas']; ?>" <?= ($selectedKelas === $kelasItem['kelas']) ? 'selected' : ''; ?>><?= $kelasItem['tingkat']; ?> <?= $kelasItem['kelas']; ?> - <?= $kelasItem['jurusan']; ?></option>
+                                <option value="<?= $kelasItem['tingkat'] ?> <?= $kelasItem['jurusan'] ?> <?= $kelasItem['kelas'] ?>" <?= ('Semua Kelas' === $kelasItem['kelas']) ? 'selected' : ''; ?>><?= $kelasItem['tingkat'] ?> <?= $kelasItem['jurusan'] ?> <?= $kelasItem['kelas'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -45,39 +45,25 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table class="table text-center" id="myTable">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Siswa</th>
-                            <th>Nama Guru</th>
-                            <th>Mapel</th>
                             <th>Kelas</th>
                             <th>Tahun Ajar</th>
-                            <th>Nilai UTS</th>
-                            <th>Nilai UAS</th>
-                            <th>Rata-rata</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0" id="kelasTerpilih">
+                    <tbody class="table-border-bottom-0">
                         <?php $i = 1; ?>
-                        <?php foreach ($raport as $item): ?>
+                        <?php $processedSiswa = []; foreach ($raport as $item): ?>
+                        <?php if (!in_array($item['id_siswa'], $processedSiswa)): ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <?php foreach ($siswa as $sis): ?>
                                     <?php if ($sis['id_siswa'] == $item['id_siswa']): ?>
                                         <td><?= $sis['nama_siswa'] ?></td>
-                                    <?php endif ?>
-                                <?php endforeach ?>
-                                <?php foreach ($guru as $gur): ?>
-                                    <?php if ($gur['id_guru'] == $item['id_guru']): ?>
-                                        <td><?= $gur['nama_guru'] ?></td>
-                                    <?php endif ?>
-                                <?php endforeach ?>
-                                <?php foreach ($mapel as $map): ?>
-                                    <?php if ($map['id_mapel'] == $item['id_mapel']): ?>
-                                        <td><?= $map['mata_pelajaran'] ?></td>
                                     <?php endif ?>
                                 <?php endforeach ?>
                                 <?php foreach ($kelas as $kel): ?>
@@ -90,20 +76,12 @@
                                         <td><?= $tah['tahun'] ?></td>
                                     <?php endif ?>
                                 <?php endforeach ?>
-                                <td><?= $item['nilai_uts'] ?></td>
-                                <td><?= $item['nilai_uas'] ?></td>
-                                <td><?= $item['rata_rata'] ?></td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<?= base_url('admin/kelola_raport/edit') ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#hapus-<?= $item['id_raport'] ?>">
-                                                <i class="bx bx-trash me-2"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <a type="button" href="<?= base_url('admin/kelola_raport/view/' . $item['id_siswa']) ?>" class="btn rounded-pill btn-primary btn-sm"><i class="bx bx-book-bookmark"></i> Raport</a>
+                                    <a type="button" href="<?= base_url('admin/kelola_raport/add/' . $item['id_siswa']) ?>" class="btn rounded-pill btn-primary btn-sm"><i class="bx bx-plus"></i> Add</a>
+                                </td>
                                 </tr>
+                                <?php $processedSiswa[] = $item['id_siswa']; endif; ?>
                             <?php endforeach ?>
                         </tbody>
                     </table>
@@ -150,34 +128,26 @@
 <?php endforeach; ?>
 
 <script>
-    document.getElementById('kelasSelect').addEventListener('change', function() {
-        // Dapatkan nilai yang dipilih
-        var selectedValue = this.value;
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("filter");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
-        // Dapatkan semua baris tabel
-        var tableRows = document.querySelectorAll("tbody#kelasTerpilih tr");
-
-        // Sembunyikan semua baris tabel
-        for (var i = 0; i < tableRows.length; i++) {
-            tableRows[i].style.display = "none";
-        }
-
-        // Tampilkan hanya baris yang sesuai dengan kelas yang dipilih
-        if (selectedValue === "Semua Kelas") {
-            // Jika "Semua Kelas" dipilih, tampilkan semua baris
-            for (var i = 0; i < tableRows.length; i++) {
-                tableRows[i].style.display = "";
-            }
-        } else {
-            // Jika kelas tertentu dipilih, tampilkan hanya baris yang cocok
-            for (var i = 0; i < tableRows.length; i++) {
-                var kelasColumn = tableRows[i].querySelector("td:nth-child(5)");
-                if (kelasColumn.textContent.includes(selectedValue)) {
-                    tableRows[i].style.display = "";
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; 
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (filter === "SEMUA KELAS" || txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
                 }
             }
         }
-    });
+    }
+
 </script>
 
 <?= $this->endSection(); ?>
