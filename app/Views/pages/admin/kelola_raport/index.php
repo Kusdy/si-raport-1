@@ -78,52 +78,52 @@
                                 <?php endforeach ?>
                                 <td>
                                     <a type="button" href="<?= base_url('admin/kelola_raport/view/' . $item['id_siswa']) ?>" class="btn rounded-pill btn-primary btn-sm"><i class="bx bx-book-bookmark"></i> Raport</a>
-                                    <a type="button" href="<?= base_url('admin/kelola_raport/add/' . $item['id_siswa']) ?>" class="btn rounded-pill btn-primary btn-sm"><i class="bx bx-plus"></i> Add</a>
+                                    <a type="button" href="<?= base_url('admin/kelola_raport/cetak_raport/' . $item['id_siswa']) ?>" class="btn rounded-pill btn-danger btn-sm"><i class="bx bx-printer"></i> Cetak</a>
                                 </td>
-                                </tr>
-                                <?php $processedSiswa[] = $item['id_siswa']; endif; ?>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="demo-inline-spacing">
-                <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
-                    <ul class="pagination">
-                        <!-- JS -->
-                    </ul>
-                    <select class="form-select" id="items-per-page" style="width: 73px;">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="75">75</option>
-                        <option value="100">100</option>
-                    </select>
-                </nav>
+                            </tr>
+                            <?php $processedSiswa[] = $item['id_siswa']; endif; ?>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <div class="demo-inline-spacing">
+            <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
+                <ul class="pagination">
+                    <!-- JS -->
+                </ul>
+                <select class="form-select" id="items-per-page" style="width: 73px;">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
+                </select>
+            </nav>
+        </div>
     </div>
+</div>
 
-    <?php foreach ($raport as $key => $item) : ?>
-        <div class="modal fade" id="hapus-<?= $item['id_raport'] ?>" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel1">Konfirmasi Penghapusan Data</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form action="<?= base_url('admin/kelola_raport/delete/' . $item['id_raport']) ?>">
-                  <div class="modal-body">
-                    <p>Yakin ingin menghapus data ini? klik hapus jika Ya!</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
-                  <button type="submit" class="btn btn-primary">Hapus</button>
-              </div>
-          </form>
-      </div>
+<?php foreach ($raport as $key => $item) : ?>
+    <div class="modal fade" id="hapus-<?= $item['id_raport'] ?>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Konfirmasi Penghapusan Data</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="<?= base_url('admin/kelola_raport/delete/' . $item['id_raport']) ?>">
+              <div class="modal-body">
+                <p>Yakin ingin menghapus data ini? klik hapus jika Ya!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
+              <button type="submit" class="btn btn-primary">Hapus</button>
+          </div>
+      </form>
   </div>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -135,19 +135,22 @@
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
 
+        var counter = 1; 
+
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[2]; 
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (filter === "SEMUA KELAS" || txtValue.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    tr[i].getElementsByTagName("td")[0].innerText = counter++;
                 } else {
                     tr[i].style.display = "none";
                 }
             }
         }
     }
-
 </script>
+
 
 <?= $this->endSection(); ?>
