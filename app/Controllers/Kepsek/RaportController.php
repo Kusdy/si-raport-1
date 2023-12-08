@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Kepsek;
 
 use App\Controllers\BaseController;
 use App\Models\RaportModel;
@@ -10,35 +10,10 @@ use App\Models\SiswaModel;
 use App\Models\MapelModel;
 use App\Models\TahunModel;
 use App\Models\SemesterModel;
-// use Mpdf\Mpdf;
 use Dompdf\Dompdf;
 
-class KelRaportController extends BaseController
+class RaportController extends BaseController
 {
-    public function findGuruIdByMapelId($id_mapel)
-    {
-        $mapel = new MapelModel();
-        $guruId = $mapel->where('id_mapel', $id_mapel)->first();
-
-        if ($guruId) {
-            return $guruId['id_guru'];
-        }
-
-        return null; 
-    }
-
-    public function findKelasIdBySiswaId($id_siswa)
-    {
-        $siswa = new SiswaModel();
-        $siswaId = $siswa->where('id_siswa', $id_siswa)->first();
-
-        if ($siswaId) {
-            return $siswaId['id_kelas'];
-        }
-
-        return null; 
-    }
-
     public function index()
     {
         $raportModel = new RaportModel();
@@ -75,102 +50,25 @@ class KelRaportController extends BaseController
 
         ];
 
-        return view('pages/admin/kelola_raport/index', $data);
+        return view('pages/kepsek/raport', $data);
     }
 
-    public function new()
-    {
-        $raportModel = new RaportModel();
-        $raport = $raportModel->findAll();
-
-        $kelasModel = new KelasModel();
-        $kelas = $kelasModel->findAll();
-
-        $guruModel = new GuruModel();
-        $guru = $guruModel->findAll();
-
-        $siswaModel = new SiswaModel();
-        $siswa = $siswaModel->findAll();
-
-        $mapelModel = new MapelModel();
-        $mapel = $mapelModel->findAll();
-
-        $tahunModel = new TahunModel();
-        $tahun = $tahunModel->findAll();
-
-        $semesterModel = new SemesterModel();
-        $semester = $semesterModel->findAll();
-
-        $data = [
-            'title' => 'Tambah Nilai Siswa',
-            'active' => 'raport',
-            'raport' => $raport,
-            'kelas' => $kelas,
-            'guru' => $guru,
-            'siswa' => $siswa,
-            'mapel' => $mapel,
-            'tahun' => $tahun,
-            'semester' => $semester,
-
-        ];
-
-        return view('pages/admin/kelola_raport/new', $data);
-    }
-
-    public function add()
-    {
-        $model = new RaportModel();
-
-        $validationRules = [
-            'id_siswa.*' => 'required',
-            'id_mapel.*' => 'required',
-            'id_thn_ajar.*' => 'required',
-            'nilai_uts.*' => 'required|numeric', 
-            'nilai_uas.*' => 'required|numeric',
-        ];
-
-        if (!$this->validate($validationRules)) {
-            $errorMessages = implode('<br>', $this->validator->getErrors());
-            return redirect()->back()->withInput()->with('error', $errorMessages);
-        }
-
-        $formData = $this->request->getPost();
-
-        foreach ($formData['id_siswa'] as $formCount => $id_siswa) {
-
-            $id_guru = $this->findGuruIdByMapelId($formData['id_mapel'][$formCount]);
-            $id_kelas = $this->findKelasIdBySiswaId($formData['id_siswa'][$formCount]);
-            $rata_rata = number_format(($formData['nilai_uts'][$formCount] + $formData['nilai_uas'][$formCount]) / 2, 2);
-
-            $data = [
-                'id_siswa' => $id_siswa,
-                'id_guru' => $id_guru,
-                'id_mapel' => $formData['id_mapel'][$formCount],
-                'id_kelas' => $id_kelas,
-                'id_thn_ajar' => $formData['id_thn_ajar'][$formCount],
-                'nilai_uts' => $formData['nilai_uts'][$formCount],
-                'nilai_uas' => $formData['nilai_uas'][$formCount],
-                'rata_rata' => $rata_rata,
-            ];
-
-            $cekKesamaan = $model->where('id_siswa', $data['id_siswa'])
-            ->where('id_mapel', $data['id_mapel'])
-            ->countAllResults();
-
-            if ($cekKesamaan > 0) {
-                return redirect()->back()->withInput()->with('error', 'Data tersebut sudah ada.');
-            }
-
-            $model->insert($data);
-        }
-
-        return redirect()->to('admin/kelola_raport/new')->with('success', 'Data berhasil ditambahkan.');
-    }
 
     public function view($id_siswa)
     {
         $raportModel = new RaportModel();
         $raport = $raportModel->where('id_siswa', $id_siswa)->findAll();
+
+        $totalNilai = 0;
+        $countNilai = 0;
+
+        foreach ($raport as $item) {
+            $totalNilai += $item['rata_rata'];
+            $countNilai++;
+        }
+
+        $rataRata = $countNilai > 0 ? $totalNilai / $countNilai : 0;
+        $nilaiAkhir = number_format($rataRata, 2, '.', '');
 
         $kelasModel = new KelasModel();
         $kelas = $kelasModel->findAll();
@@ -201,59 +99,14 @@ class KelRaportController extends BaseController
             'tahun' => $tahun,
             'semester' => $semester,
             'raportSiswa' => $id_siswa,
+            'nilaiAkhir' => $nilaiAkhir,
 
         ];
-        return view('pages/admin/kelola_raport/edit', $data);
-    }
-
-    public function update($idSiswa)
-    {
-        $idMapel = $this->request->getPost('id_mapel');
-        $idThnAjar = $this->request->getPost('id_thn_ajar');
-        $nilaiUTS = $this->request->getPost('nilai_uts');
-        $nilaiUAS = $this->request->getPost('nilai_uas');
-
-        $raportModel = new RaportModel();
-
-        foreach ($idMapel as $key => $value) {
-            $data = [
-                'id_siswa' => $idSiswa,
-                'id_mapel' => $idMapel[$key],
-                'id_thn_ajar' => $idThnAjar[$key],
-                'nilai_uts' => $nilaiUTS[$key],
-                'nilai_uas' => $nilaiUAS[$key],
-                'rata_rata' => ($nilaiUTS[$key] + $nilaiUAS[$key]) / 2,
-            ];
-
-            $existingRaport = $raportModel->where([
-                'id_siswa' => $idSiswa,
-                'id_mapel' => $idMapel[$key],
-                'id_thn_ajar' => $idThnAjar[$key],
-            ])->first();
-
-            if ($existingRaport) {
-                $raportModel->update($existingRaport['id_raport'], $data);
-            } 
-        }
-
-        return redirect()->to(base_url('admin/kelola_raport'))->with('success', 'Nilai raport berhasil diperbarui.');
+        return view('pages/kepsek/view-raport', $data);
     }
 
 
-    public function delete($id)
-    {
-        $raportModel = new RaportModel();
-        $raport = $raportModel->find($id);
-
-        if ($raport) {
-            $raportModel->delete($id);
-
-            session()->setFlashdata('success', 'Data berhasil dihapus.');
-        }
-        return redirect()->back();
-    }
-
-    public function pdf($id)
+    public function cetak($id)
     {
         $raportModel = new RaportModel();
         $siswaModel = new SiswaModel();

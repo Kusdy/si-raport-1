@@ -147,4 +147,9 @@ $routes->group('wakel', ['filter' => 'auth'], function ($routes) {
 // KEPALA SEKOLAH AKSES
 $routes->group('kepsek', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Kepsek\DashboardController::index');
+
+    // RAPORT
+    $routes->get('kelola_raport', 'Kepsek\RaportController::index');
+    $routes->get('kelola_raport/view/(:num)', 'Kepsek\RaportController::view/$1');
+    $routes->get('kelola_raport/cetak_raport/(:num)', 'Kepsek\RaportController::cetak/$1');
 });

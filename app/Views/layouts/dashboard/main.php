@@ -16,7 +16,19 @@ data-template="vertical-menu-template-free"
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
 			<!-- Menu -->
+			<?php if (session()->get('role') === 'Admin') : ?>
+
 			<?= $this->include('layouts/dashboard/sidebar'); ?>
+
+			<?php elseif (session()->get('role') === 'Siswa') : ?>
+
+			<?= $this->include('layouts/sidebar/siswa'); ?>
+
+			<?php elseif (session()->get('role') === 'Kepala sekolah') : ?>
+
+			<?= $this->include('layouts/sidebar/kepsek'); ?>
+
+			<?php endif; ?>
 			<!-- / Menu -->
 
 			<!-- Layout container -->
