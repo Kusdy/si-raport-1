@@ -28,20 +28,13 @@
         <!-- Basic Bootstrap Table -->
         <div class="card">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-lg-8 col-sm-8 col-6">
                     <h5 class="card-header">Data Raport</h5>
                 </div>
-                <div class="col-md-4 text-end">
-                    <div class="btn-group mt-3" style="margin-right: 20px;">
-                        <button type="button" class="btn btn-primary dropdown-toggle mr-3" data-bs-toggle="dropdown" aria-expanded="false">
-                            Aksi
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('admin/kelola_raport/new') ?>">Tambah Nilai</a></li>
-                            <hr class="dropdown-divider" />
-                            <li><a class="dropdown-item" href="<?= base_url('admin/kelola_raport/cetak-pdf') ?>">Cetak PDF</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-4 col-sm-4 col-6 text-end">
+                    <a href="<?= base_url('admin/kelola_raport/new'); ?>" class="btn btn-primary mt-3 mx-4">
+                        <span class="tf-icons bx bx-plus"></span>&nbsp; Tambah
+                    </a>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
