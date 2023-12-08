@@ -19,7 +19,7 @@
                                         <?php
                                         $allowedRoles = ['Admin', 'Guru', 'Siswa', 'Wali kelas', 'Kepala sekolah'];
                                         foreach ($allowedRoles as $role) :
-                                        ?>
+                                            ?>
                                             <option value="<?= $role; ?>"><?= $role; ?></option>
                                         <?php endforeach; ?>
                                     </select>
@@ -69,24 +69,24 @@
                                     $roleClass = '';
                                     switch ($item['role']) {
                                         case 'Admin':
-                                            $roleClass = 'bg-label-danger';
-                                            break;
+                                        $roleClass = 'bg-label-danger';
+                                        break;
                                         case 'Guru':
-                                            $roleClass = 'bg-label-success';
-                                            break;
+                                        $roleClass = 'bg-label-success';
+                                        break;
                                         case 'Siswa':
-                                            $roleClass = 'bg-label-warning';
-                                            break;
+                                        $roleClass = 'bg-label-warning';
+                                        break;
                                         case 'Wali kelas':
-                                            $roleClass = 'bg-label-info';
-                                            break;
+                                        $roleClass = 'bg-label-info';
+                                        break;
                                         case 'Kepala sekolah':
-                                            $roleClass = 'bg-label-primary';
-                                            break;
+                                        $roleClass = 'bg-label-primary';
+                                        break;
                                         default:
-                                            $roleClass = 'bg-label-secondary';
+                                        $roleClass = 'bg-label-secondary';
                                     }
-                                ?>
+                                    ?>
                                     <tr>
                                         <td><?= $counter++ ?></td>
                                         <td><?= $item['nama']; ?></td>
@@ -107,6 +107,21 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="demo-inline-spacing">
+                    <nav class="d-flex justify-content-between align-items-center" aria-label="Page navigation">
+                        <ul class="pagination">
+                            <!-- JS -->
+                        </ul>
+                        <select class="form-select" id="items-per-page" style="width: 73px;">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="75">75</option>
+                            <option value="100">100</option>
+                        </select>
+                    </nav>
                 </div>
             </div>
         </div>
